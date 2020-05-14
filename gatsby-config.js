@@ -3,23 +3,16 @@ const manifestConfig = require('./manifest-config');
 require('dotenv').config();
 
 const { ACCESS_TOKEN, SPACE_ID, ANALYTICS_ID, DETERMINISTIC } = process.env;
+
+// TODO: Fix import of access token and IDs 
 const client = contentful.createClient({
   space: SPACE_ID,
   accessToken: ACCESS_TOKEN,
 });
-
 const getAboutEntry = entry => entry.sys.contentType.sys.id === 'about';
 
 const plugins = [
   'gatsby-plugin-react-helmet',
-  {
-    resolve: 'gatsby-plugin-web-font-loader',
-    options: {
-      google: {
-        families: ['Cabin', 'Open Sans'],
-      },
-    },
-  },
   {
     resolve: 'gatsby-plugin-manifest',
     options: manifestConfig,
@@ -31,6 +24,13 @@ const plugins = [
       spaceId: SPACE_ID,
       accessToken: ACCESS_TOKEN,
     },
+  },
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      name: "fonts",
+      path: `${__dirname}/static/fonts/`
+    }
   },
   'gatsby-transformer-remark',
   'gatsby-plugin-offline',

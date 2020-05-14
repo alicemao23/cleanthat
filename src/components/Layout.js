@@ -7,7 +7,8 @@ import {
 } from '@material-ui/core/styles'
 import { ScrollingProvider } from 'react-scroll-section'
 import config from 'react-reveal/globals'
-import colors from '../../colors'
+// import colors from '../../colors'
+import PoppinsBlack from '../../static/fonts/Poppins/Poppins-Black.woff'
 import Helmet from './Helmet'
 import Header from '../sections/Header'
 
@@ -25,7 +26,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box; 
     margin: 0;
-    font-family: Cabin, 'Open Sans', sans-serif;
+    // font-family: Cabin, 'Open Sans', sans-serif;
+    font-family: PoppinsBlack;
     overflow-x: hidden;
     width: 100vw;
   }
@@ -64,24 +66,22 @@ const theme = createMuiTheme({
 })
 
 const Layout = ({ children }) => {
-  useEffect(() => {
-    loadScript('https://use.fontawesome.com/fd58d214b9.js')
-  }, [])
+  // useEffect(() => {
+  //   loadScript('https://use.fontawesome.com/fd58d214b9.js')
+  // }, [])
 
   return (
-    <StylesProvider injectFirst>
-      <main>
-        <GlobalStyle />
-        <MuiThemeProvider theme={theme}>
-          <ThemeProvider theme={theme}>
-            <ScrollingProvider>
-              <Helmet />
-              <Header />
-              {children}
-            </ScrollingProvider>
-          </ThemeProvider>
-        </MuiThemeProvider>
-      </main>
+    <StylesProvider>
+      <GlobalStyle />
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <ScrollingProvider>
+            <Helmet />
+            <Header />
+            {children}
+          </ScrollingProvider>
+        </ThemeProvider>
+      </MuiThemeProvider>
     </StylesProvider>
   )
 }
