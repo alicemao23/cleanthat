@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import {
-  StylesProvider,
   createMuiTheme,
+  StylesProvider,
   ThemeProvider as MuiThemeProvider
 } from '@material-ui/core/styles'
-import { ScrollingProvider } from 'react-scroll-section'
+import React, { useEffect } from 'react'
 import config from 'react-reveal/globals'
-// import colors from '../../colors'
-import PoppinsBlack from '../../static/fonts/Poppins/Poppins-Black.woff'
-import Helmet from './Helmet'
-import Header from '../sections/Header'
+import { ScrollingProvider } from 'react-scroll-section'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
+import Header from '../sections/Header'
+import Helmet from './Helmet'
+
+// import colors from '../../colors'
 const GlobalStyle = createGlobalStyle`
   *,
   *::after,
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box; 
     margin: 0;
     // font-family: Cabin, 'Open Sans', sans-serif;
-    font-family: PoppinsBlack;
+    font-family: Poppins;
     overflow-x: hidden;
     width: 100vw;
   }
