@@ -1,5 +1,3 @@
-import '../styles/global.css'
-
 import React from 'react'
 
 import AboutUs from './about-us'
