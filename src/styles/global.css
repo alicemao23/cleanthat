@@ -2,7 +2,7 @@
   font-family: Poppins;
   font-weight: 400;
   font-style: normal;
-  src: url('./static/Poppins-Black.woff') format('woff');
+  src: url('../../static/fonts/Poppins/Poppins-Black.woff') format('woff');
   font-display: swap;
 }
 
