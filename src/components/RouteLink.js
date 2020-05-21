@@ -30,7 +30,6 @@ const LinkContainer = styled.div`
     transition-timing-function: ease-out;
   }
 
-
   &:hover:after {
     width: 100%;
   }

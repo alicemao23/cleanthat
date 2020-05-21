@@ -59,19 +59,26 @@ const theme = createMuiTheme({
   },
   colors: {
     commercial: {
-      primary: '#1933D3'
+      primary: '#1933D3',
+      primaryLight: '#D2E6FD',
+      text: '#FFFFFF'
     },
-    light: '#FFFFFF'
+    residential: {
+      primary: '#FACE6F',
+      primaryLight: '#FFF5E2',
+      text: '#000000'
+    },
+    shadow: '8px 8px 16px rgba(0, 0, 0, 0.1)'
+  },
+  fonts: {
+    heading: 'Poppins',
+    body: 'Din'
   }
 })
 
 const Layout = ({ children }) => {
-  // useEffect(() => {
-  //   loadScript('https://use.fontawesome.com/fd58d214b9.js')
-  // }, [])
-
   return (
-    <StylesProvider>
+    <StylesProvider injectFirst>
       <GlobalStyle />
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>

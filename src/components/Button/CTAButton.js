@@ -7,14 +7,16 @@ const StyledButton = styled(Button)`
   height: 4rem;
   font-size: 1.4rem;
   border-radius: 5.4rem;
-  ${({ theme }) => `
-    background-color: ${theme.colors.commercial.primary};
-    color: ${theme.colors.light};
+  font-family: Poppins;
+  font-weight: bold;
+  ${({ theme, type }) =>`
+    background-color: ${theme.colors[type].primary};
+    color: ${theme.colors[type].text};
   `}
 `
 
-const CTAButton = ({ label = '', onClick = () => {} }) => {
-  return <StyledButton onClick={onClick}>{label}</StyledButton>
+const CTAButton = ({ label = '', onClick = () => {}, type =''}) => {
+  return <StyledButton type={type} onClick={onClick}>{label}</StyledButton>
 }
 
 export default CTAButton

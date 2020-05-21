@@ -1,13 +1,47 @@
 @font-face {
   font-family: Poppins;
   font-weight: 400;
-  font-style: normal;
-  src: url('../../static/fonts/Poppins/Poppins-Black.woff') format('woff');
-  font-display: swap;
+  src: url('../../static/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
 }
 
-/* @font-face {
-  font-family: "Poppins Bold";
-  src: url("./static/fonts/Poppins/Poppins-Bold.ttf")
-  format("ttf");
-}  */
+@font-face {
+  font-family: Poppins;
+  src: url("../../static/fonts/Poppins/Poppins-Bold.ttf") format("ttf"), 
+  url('../../static/fonts/Poppins/Poppins-Bold.woff') format('woff');
+  font-weight: 700;
+} 
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 500;
+  src: url('../../static/fonts/Poppins/Poppins-Black.ttf') format('truetype'), 
+  url('../../static/fonts/Poppins/Poppins-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("../../static/fonts/Poppins/Poppins-BlackItalic.ttf") format("ttf");
+  font-style: italic;
+} 
+
+
+
+@font-face {
+  font-family: DIN;
+  src: url("../../static/fonts/Din/D-DIN.otf") format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: DIN;
+  src: url("../../static/fonts/Din/D-DIN-Bold.otf") format('opentype');
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: DIN;
+  src: url("../../static/fonts/Din/D-DIN-Italic.otf") format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}

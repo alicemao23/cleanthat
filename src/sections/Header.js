@@ -13,7 +13,8 @@ const LINKS = ['About us', 'Cleaning Services', 'Contact us', 'blog']
 
 const HeaderContainer = styled(Headroom)`
   // position: absolute;
-  font-family: "Poppins";
+  font-family: Din;
+  font-weight: 700;
   width: 100%;
   padding: 0 8.33%;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
@@ -87,7 +88,7 @@ const NavigationContainer = () => {
         name="Contact us"
       />
       <RouteLink key={3} path="blog" onClick={() => {}} name="blog" />
-      <Button label="Get a Quote" />
+      <Button type="commercial" label="Get a Quote" />
     </Nav>
   )
 }
