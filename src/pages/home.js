@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby'
 import PageLayout from '../components/Containers/PageContainer.style.js'
 import ServiceBannerLayout from '../components/Containers/BannerCardContainer.js'
 import Button from '../components/Button/CTAButton'
@@ -18,17 +19,39 @@ const StyledContainer = styled(PageLayout)`
   padding-right: 0;
 `
 
-const HomePage = () => {
-  return (
-    <>
-      <HeroBanner />
-      <CTAContainer />
-      <CommercialFeatureCard />
-      <ResidentialFeatureCard />
-      <TestimonialSection />
-    </>
-  )
-}
+const HomePage = () => (
+  <StaticQuery
+    query={graphql`
+      query AboutMeQuery {
+        contentfulAbout {
+          aboutMe {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
+          profile {
+            title
+            image: resize(width: 450, quality: 100) {
+              src
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => {
+      const { aboutMe, profile } = data.contentfulAbout
+      return (
+        <>
+          <HeroBanner />
+          <CTAContainer />
+          <CommercialFeatureCard />
+          <ResidentialFeatureCard />
+          <TestimonialSection />
+        </>
+      )
+    }}
+  />
+)
 
 const HeroInfoContainer = styled.div`
   flex: 0 1 48.7rem;

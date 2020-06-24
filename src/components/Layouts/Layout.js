@@ -3,13 +3,14 @@ import {
   StylesProvider,
   ThemeProvider as MuiThemeProvider
 } from '@material-ui/core/styles'
-import React, { useEffect } from 'react'
+import React from 'react'
 import config from 'react-reveal/globals'
 import { ScrollingProvider } from 'react-scroll-section'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-import Header from '../sections/Header'
-import Helmet from './Helmet'
+import Header from '../../sections/Header'
+import Footer from '../../sections/Footer'
+import Helmet from '../Helmet'
 
 // import colors from '../../colors'
 const GlobalStyle = createGlobalStyle`
@@ -68,6 +69,10 @@ const theme = createMuiTheme({
       primaryLight: '#FFF5E2',
       text: '#000000'
     },
+    footer: {
+      text: '#FFFFFF',
+      background: '#1933D3'
+    },
     shadow: '8px 8px 16px rgba(0, 0, 0, 0.1)'
   },
   fonts: {
@@ -86,6 +91,7 @@ const Layout = ({ children }) => {
             <Helmet />
             <Header />
             {children}
+            <Footer />
           </ScrollingProvider>
         </ThemeProvider>
       </MuiThemeProvider>

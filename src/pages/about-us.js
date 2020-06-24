@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PageHeader } from '../components/Header/index'
-import Layout from '../components/Layout'
-import Container from '../components/Containers/PageContainer.style.js'
+import Layout from '../components/Layouts/Layout'
+import Container from '../components/Containers/PageContainer.style'
 
 const CardHeader = styled.h4`
   font-size: 2.4rem;
