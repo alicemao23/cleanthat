@@ -9,14 +9,18 @@ const StyledButton = styled(Button)`
   border-radius: 5.4rem;
   font-family: Poppins;
   font-weight: bold;
-  ${({ theme, type }) =>`
-    background-color: ${theme.colors[type].primary};
-    color: ${theme.colors[type].text};
+  ${({ theme, buttonType }) => `
+    background-color: ${theme.colors[buttonType].primary};
+    color: ${theme.colors[buttonType].text};
   `}
 `
 
-const CTAButton = ({ label = '', onClick = () => {}, type =''}) => {
-  return <StyledButton type={type} onClick={onClick}>{label}</StyledButton>
+const CTAButton = ({ label = '', onClick = () => {}, type = '' }) => {
+  return (
+    <StyledButton buttonType={type} onClick={onClick}>
+      {label}
+    </StyledButton>
+  )
 }
 
 export default CTAButton

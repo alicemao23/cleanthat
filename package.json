@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "gatsby clean && gatsby build",
-    "develop": "gatsby clean && gatsby develop",
-    "start": "yarn develop",
+    "dev": "gatsby clean && gatsby develop",
+    "start": "yarn dev",
     "serve": "yarn build && gatsby serve -p 9000",
     "lint": "eslint ./src",
     "setup": "node ./bin/setup.js",

@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-
 import Headroom from 'react-headroom'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 
-import RouteLink from '../components/RouteLink'
+import { NavLink, MenuLink } from '../components/Links'
 import Button from '../components/Button/CTAButton'
-
+import MAIN_LOGO from '../shared/main-logo.svg'
 const LINKS = ['About us', 'Cleaning Services', 'Contact us', 'blog']
 
 const HeaderContainer = styled(Headroom)`
-  // position: absolute;
   font-family: Din;
   font-weight: 700;
   width: 100%;
@@ -29,7 +27,7 @@ const Layout = styled.div`
   background-color: white;
 `
 
-const Logo = () => 'LOGO'
+const Logo = () => <img src={MAIN_LOGO} />
 
 const Nav = styled.div`
   display: flex;
@@ -53,16 +51,21 @@ const NavigationContainer = () => {
     setAnchorEl(null)
   }
 
+  const linkStyle = {
+    textDecoration: 'none',
+    fontFamily: 'Din'
+  }
+
   return (
     <Nav>
-      <RouteLink
+      <NavLink
         // selected
         key={0}
         path="about-us"
-        onClick={() => {}}
         name="About us"
       />
-      <RouteLink
+      <NavLink
+        type="button"
         key={1}
         path="services"
         onClick={handleClick}
@@ -78,16 +81,27 @@ const NavigationContainer = () => {
         getContentAnchorEl={null}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
-        <MenuItem onClick={handleClose}>Residential Services</MenuItem>
-        <MenuItem onClick={handleClose}>Commercial Services</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <MenuLink
+            // selected
+            key={0}
+            to="residential-services"
+          >
+            Residential Services
+          </MenuLink>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <MenuLink
+            // selected
+            key={0}
+            to="residential-services"
+          >
+            Commercial Services
+          </MenuLink>
+        </MenuItem>
       </Menu>
-      <RouteLink
-        key={2}
-        path="contact-us"
-        onClick={() => {}}
-        name="Contact us"
-      />
-      <RouteLink key={3} path="blog" onClick={() => {}} name="blog" />
+      <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
+      <NavLink key={3} path="blog" onClick={() => {}} name="blog" />
       <Button type="commercial" label="Get a Quote" />
     </Nav>
   )

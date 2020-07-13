@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby'
 import PageLayout from '../components/Containers/PageContainer.style.js'
 import ServiceBannerLayout from '../components/Containers/BannerCardContainer.js'
 import Button from '../components/Button/CTAButton'
@@ -18,17 +19,39 @@ const StyledContainer = styled(PageLayout)`
   padding-right: 0;
 `
 
-const HomePage = () => {
-  return (
-    <>
-      <HeroBanner />
-      <CTAContainer />
-      <CommercialFeatureCard />
-      <ResidentialFeatureCard />
-      <TestimonialSection />
-    </>
-  )
-}
+const HomePage = () => (
+  <StaticQuery
+    query={graphql`
+      query AboutMeQuery {
+        contentfulAbout {
+          aboutMe {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
+          profile {
+            title
+            image: resize(width: 450, quality: 100) {
+              src
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => {
+      const { aboutMe, profile } = data.contentfulAbout
+      return (
+        <>
+          <HeroBanner />
+          <CTAContainer />
+          <CommercialFeatureCard />
+          <ResidentialFeatureCard />
+          <TestimonialSection />
+        </>
+      )
+    }}
+  />
+)
 
 const HeroInfoContainer = styled.div`
   flex: 0 1 48.7rem;
@@ -117,38 +140,37 @@ const BannerImage = styled.div`
   flex-basis: 50%;
   height: 100%;
 `
+const Container = styled.div`
+  width: 50%;
+  padding: 8rem 12rem;
+`
+const Label = styled.span`
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: ${({ theme, type = 'commercial' }) => theme.colors[type].primary};
+  text-transform: uppercase;
+`
 
+const Header = styled.h3`
+  font-size: 3.5rem;
+  margin-top: 1rem;
+  margin-bottom: 3.5rem;
+`
+
+const Info = styled.p`
+  font-family: Din;
+  font-size: 1.6rem;
+  line-height: 122%;
+`
 const BannerHeroContent = ({
   headerLabel = '',
   headerTitle = '',
   description = '',
   type = ''
 }) => {
-  const Container = styled.div`
-    width: 50%;
-    padding: 8rem 12rem;
-  `
-  const Label = styled.span`
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: ${({ theme }) => theme.colors[type].primary};
-    text-transform: uppercase;
-  `
-
-  const Header = styled.h3`
-    font-size: 3.5rem;
-    margin-top: 1rem;
-    margin-bottom: 3.5rem;
-  `
-
-  const Info = styled.p`
-    font-family: Din;
-    font-size: 1.6rem;
-    line-height: 122%;
-  `
   return (
     <Container>
-      <Label>{headerLabel}</Label>
+      <Label type={type}>{headerLabel}</Label>
       <Header>{headerTitle}</Header>
       <Info>{description}</Info>
       <Button type={type} label="Get Details" />
