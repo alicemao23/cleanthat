@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 import { NavLink, MenuLink } from '../components/Links'
 import Button from '../components/Button/CTAButton'
-import MAIN_LOGO from '../shared/main-logo.svg'
+import MAIN_LOGO from '../media/main-logo.svg'
 const LINKS = ['About us', 'Cleaning Services', 'Contact us', 'blog']
 
 const HeaderContainer = styled(Headroom)`
@@ -36,7 +36,7 @@ const Nav = styled.div`
   justify-content: flex-end;
   align-items: center;
   height: 100%;
-  * :not(:last-child) {
+  > * :not(:last-child) {
     margin: 0 45px;
   }
 `
@@ -93,8 +93,8 @@ const NavigationContainer = () => {
         <MenuItem onClick={handleClose}>
           <MenuLink
             // selected
-            key={0}
-            to="residential-services"
+            key={1}
+            to="commercial-services"
           >
             Commercial Services
           </MenuLink>

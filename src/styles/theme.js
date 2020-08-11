@@ -3,6 +3,7 @@ module.exports = {
     primaryLight: '#FFFFFF',
     textPrimary: '#000000',
     textSecondary: '#FFFFFF',
+    placeholder: '#A6A6A6',
     commercial: {
       primary: '#1933D3',
       primaryLight: '#D2E6FD',

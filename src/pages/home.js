@@ -4,9 +4,9 @@ import { StaticQuery, graphql } from 'gatsby'
 import PageLayout from '../components/Containers/PageContainer.style.js'
 import ServiceBannerLayout from '../components/Containers/BannerCardContainer.js'
 import Button from '../components/Button/CTAButton'
-import banner from '../shared/home-banner.svg'
-import CommercialFeatureImg from '../shared/commercial-feature.png'
-import ResidentialFeatureImg from '../shared/residential-feature.png'
+import banner from '../media/home-banner.svg'
+import CommercialFeatureImg from '../media/commercial-feature.png'
+import ResidentialFeatureImg from '../media/residential-feature.png'
 
 import TestimonialSection from '../sections/HomePage/Testimonials'
 // HERO BANNER

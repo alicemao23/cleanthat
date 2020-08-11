@@ -6,12 +6,12 @@ import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
 import Layout from '../components/Layouts'
 import Container from '../components/Containers/PageContainer.style'
 
-import addressDivider from '../shared/address-divider.svg'
-import phoneDivider from '../shared/phone-divider.svg'
-import hoursDivider from '../shared/hours-divider.svg'
-import serviceAreaDivider from '../shared/service-area-divider.svg'
-import residentialMap from '../shared/residential-map.svg'
-import commercialMap from '../shared/commercial-map.svg'
+import addressDivider from '../media/address-divider.svg'
+import phoneDivider from '../media/phone-divider.svg'
+import hoursDivider from '../media/hours-divider.svg'
+import serviceAreaDivider from '../media/service-area-divider.svg'
+import residentialMap from '../media/residential-map.svg'
+import commercialMap from '../media/commercial-map.svg'
 
 const StyledContainer = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from '../components/Containers/PageContainer.style'
-import LOGO from '../shared/full-logo.svg'
+import LOGO from '../media/full-logo.svg'
 import { RouteLink } from '../components/Links'
 
 const FooterContainer = styled(Container)`

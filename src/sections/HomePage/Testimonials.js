@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { SectionHeader } from '../../components/Header'
-import ClayIcon from '../../shared/clay-icon.svg'
+import ClayIcon from '../../media/clay-icon.svg'
 
 const TestimonialContainer = styled.div`
   display: flex;
