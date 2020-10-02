@@ -11,6 +11,7 @@ import Container from '../components/Containers/PageContainer.style'
 import HeroBackground from '../media/residentialHero.svg'
 import Form from '../components/Form'
 import Button from '../components/Button/CTAButton'
+import TestimonyCarousel from '../components/Carousel'
 
 import { COMMERCIAL_SERVICES_LOGO_MAP } from '../shared/constants'
 
@@ -21,7 +22,21 @@ const HeroContainer = styled(ContainerLayout)`
   display: flex;
   justify-content: space-between;
 `
-
+const CarouselContainer = styled(ContainerLayout)`
+  position: relative;
+  :before {
+    content: '';
+    width: 50%;
+    height: 30%;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.commercial.primary};
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -30%) rotate(12deg);
+    z-index: -1;
+  }
+`
 const HeroDetails = styled.div`
   width: 500px;
 `
@@ -95,10 +110,10 @@ const CommercialServicesPage = () => {
   return (
     <Layout>
       <BackgroundContainer>
-        <PageHeader>Commercial Cleaning</PageHeader>{' '}
+        <PageHeader>Commercial Cleaning</PageHeader>
       </BackgroundContainer>
 
-      <Container></Container>
+      <Container />
       <HeroContainer>
         <HeroDetails>
           <StyledCardHeader>
@@ -136,9 +151,8 @@ const CommercialServicesPage = () => {
             component={TextField}
             label="Name"
             id="name"
-            placeholder={'Your first and last name'}
+            placeholder="Your first and last name"
             required
-            // classes={classes.textField}
           />
           <Field
             type="text"
@@ -146,9 +160,8 @@ const CommercialServicesPage = () => {
             component={TextField}
             label="email"
             id="email"
-            placeholder={'johndoe@email.com'}
+            placeholder="johndoe@email.com"
             required
-            // classes={classes.textField}
           />
           <Field
             type="text"
@@ -156,8 +169,7 @@ const CommercialServicesPage = () => {
             component={TextField}
             label="phone (optional)"
             id="phone"
-            placeholder={'123-456-7890'}
-            // classes={classes.textField}
+            placeholder="123-456-7890"
           />
           <Field
             type="text"
@@ -165,8 +177,7 @@ const CommercialServicesPage = () => {
             component={TextField}
             label="How can we help you?"
             id="inquiry"
-            placeholder={'Your inquiry'}
-            // classes={classes.textField}
+            placeholder="Your inquiry"
           />
           <Field
             type="text"
@@ -182,7 +193,6 @@ const CommercialServicesPage = () => {
               'Community  Center',
               'Others'
             ]}
-            // classes={classes.textField}
           />
           <Field
             type="text"
@@ -200,9 +210,8 @@ const CommercialServicesPage = () => {
               'Others'
             ]}
             renderValue={(val) => {
-              return val ? val : 'Select one'
+              return val || 'Select one'
             }}
-            // classes={classes.textField}
           />
           <Button type="commercial" label="send" />
         </Form>
@@ -222,6 +231,9 @@ const CommercialServicesPage = () => {
           })}
         </ServiceIcons>
       </ServicesIconContainer>
+      <CarouselContainer>
+        <TestimonyCarousel />
+      </CarouselContainer>
     </Layout>
   )
 }

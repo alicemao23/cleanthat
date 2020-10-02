@@ -44,8 +44,8 @@ const Slogan = styled.p`
 const NAV_LINKS = [
   'Home',
   'About us',
-  'Commercial cleaning',
-  'Residential cleaning',
+  'Commercial services',
+  'Residential services',
   'Careers',
   'Contact us',
   'Blog'

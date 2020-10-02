@@ -8,7 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { NavLink, MenuLink } from '../components/Links'
 import Button from '../components/Button/CTAButton'
 import MAIN_LOGO from '../media/main-logo.svg'
-const LINKS = ['About us', 'Cleaning Services', 'Contact us', 'blog']
 
 const HeaderContainer = styled(Headroom)`
   font-family: Din;
@@ -101,7 +100,7 @@ const NavigationContainer = () => {
         </MenuItem>
       </Menu>
       <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
-      <NavLink key={3} path="blog" onClick={() => {}} name="blog" />
+      <NavLink key={3} path="blog" onClick={() => {}} name="Blog" />
       <Button type="commercial" label="Get a Quote" />
     </Nav>
   )
