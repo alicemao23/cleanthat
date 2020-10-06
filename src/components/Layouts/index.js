@@ -104,7 +104,8 @@ const typography = {
     },
     body1: {
       fontSize: '1.6rem',
-      fontFamily: globalTheme.fonts.secondary
+      fontFamily: globalTheme.fonts.secondary,
+      lineHeight: '20px'
     },
     caption: {
       fontSize: '1.6rem',

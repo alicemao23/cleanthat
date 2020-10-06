@@ -119,11 +119,11 @@ const CTAContainer = () => {
     <StyledCTAContainer>
       <CTACard type="commercial">
         <p>Commercial Cleaning</p>
-        <Button type="commercial" label="Get a Quote" />
+        <Button variant="commercial">Get a Quote</Button>
       </CTACard>
       <CTACard type="residential">
         <p>Residential Cleaning</p>
-        <Button type="residential" label="Book Now" />
+        <Button variant="residential">Book Now</Button>
       </CTACard>
     </StyledCTAContainer>
   )
@@ -173,7 +173,7 @@ const BannerHeroContent = ({
       <Label type={type}>{headerLabel}</Label>
       <Header>{headerTitle}</Header>
       <Info>{description}</Info>
-      <Button type={type} label="Get Details" />
+      <Button variant={type}>Get Details</Button>
     </Container>
   )
 }

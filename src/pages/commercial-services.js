@@ -7,7 +7,6 @@ import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
 import Layout from '../components/Layouts'
 import TextField from '../components/TextField'
 import Select from '../components/Select'
-import Container from '../components/Containers/PageContainer.style'
 import HeroBackground from '../media/residentialHero.svg'
 import Form from '../components/Form'
 import Button from '../components/Button/CTAButton'
@@ -50,7 +49,7 @@ const BackgroundContainer = styled.div`
   padding-left: 12rem;
 `
 const ServicesIconContainer = styled(ContainerLayout)`
-  background-color: #d2e6fd;
+  background-color: ${({ theme }) => theme.colors.commercial.background};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +112,6 @@ const CommercialServicesPage = () => {
         <PageHeader>Commercial Cleaning</PageHeader>
       </BackgroundContainer>
 
-      <Container />
       <HeroContainer>
         <HeroDetails>
           <StyledCardHeader>
@@ -213,7 +211,7 @@ const CommercialServicesPage = () => {
               return val || 'Select one'
             }}
           />
-          <Button type="commercial" label="send" />
+          <Button variant="commercial"> send </Button>
         </Form>
       </HeroContainer>
       <ServicesIconContainer>

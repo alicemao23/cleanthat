@@ -88,7 +88,7 @@ const Info = styled.p`
   line-height: 2rem;
 `
 
-function SwipeableTextMobileStepper() {
+function SwipeableTextMobileStepper({ type = 'commercial' }) {
   const classes = useStyles()
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)
@@ -114,7 +114,7 @@ function SwipeableTextMobileStepper() {
                   <Label>{headerLabel}</Label>
                   <Info>{`"${description}"`}</Info>
                 </div>
-                <Name>{name}</Name>
+                <Name type={type}>{name}</Name>
               </Container>
             </SplitBanner>
           ))}

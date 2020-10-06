@@ -7,12 +7,14 @@ module.exports = {
     commercial: {
       primary: '#1933D3',
       primaryLight: '#D2E6FD',
-      text: '#FFFFFF'
+      text: '#FFFFFF',
+      background: '#D2E6FD'
     },
     residential: {
       primary: '#FACE6F',
       primaryLight: '#FFF5E2',
-      text: '#000000'
+      text: '#000000',
+      background: '#FFF5E2'
     },
     footer: {
       text: '#FFFFFF',

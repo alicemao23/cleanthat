@@ -101,7 +101,7 @@ const NavigationContainer = () => {
       </Menu>
       <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
       <NavLink key={3} path="blog" onClick={() => {}} name="Blog" />
-      <Button type="commercial" label="Get a Quote" />
+      <Button variant="commercial">Get a Quote</Button>
     </Nav>
   )
 }
