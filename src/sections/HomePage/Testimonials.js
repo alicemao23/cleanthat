@@ -6,7 +6,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Carousel from '../../components/Carousel'
 
 import { SectionHeader } from '../../components/Header'
-import ClayIcon from '../../media/clay-icon.svg'
 
 const TestimonialContainer = styled.div`
   display: flex;
@@ -48,6 +47,8 @@ const TestimonialTile = ({ author = '', details = '' }) => {
 }
 
 const Container = styled.section`
+  max-width: 1440px;
+  margin: auto;
   overflow: hidden;
   padding: 8rem 2rem 16rem;
   position: relative;
