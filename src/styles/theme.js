@@ -1,4 +1,12 @@
 module.exports = {
+  screenSizes: {
+    mobileXS: '(min-width: 375px))',
+    mobileS: '(min-width: 425px)',
+    tablet: '(min-width: 768px)',
+    laptop: '(min-width: 1024px)',
+    laptopL: '(min-width: 1440px)',
+    desktop: '(min-width: 2560px)'
+  },
   colors: {
     primaryLight: '#FFFFFF',
     textPrimary: '#000000',

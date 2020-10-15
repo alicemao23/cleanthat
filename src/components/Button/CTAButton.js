@@ -11,6 +11,9 @@ const StyledButton = styled(Button)`
   ${({ theme, variant = 'commercial' }) => `
     background-color: ${theme.colors[variant].primary};
     color: ${theme.colors[variant].text};
+    &.MuiButton-root:hover {
+      background-color: ${theme.colors[variant].primary};
+    }
   `}
 `
 
@@ -22,7 +25,6 @@ export const StyledLink = styled.a`
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
-
   text-decoration: none;
   min-width: 16.5rem;
   height: 4rem;
@@ -33,9 +35,9 @@ export const StyledLink = styled.a`
   text-align: center;
   line-height: 4rem;
   ${({ theme, variant = 'commercial' }) => `
-  background-color: ${theme.colors[variant].primary};
-  color: ${theme.colors[variant].text};
-`}
+    background-color: ${theme.colors[variant].primary};
+    color: ${theme.colors[variant].text};
+  `}
 `
 
 export default StyledButton

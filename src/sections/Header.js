@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
+import clsx from 'clsx'
 import Headroom from 'react-headroom'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
 
-import { NavLink, MenuLink } from '../components/Links'
-import Button from '../components/Button/CTAButton'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
+import { Menu, MobileMenu } from '../components/Menu'
 import MAIN_LOGO from '../media/main-logo.svg'
+import MIN_LOGO from '../media/mini-logo.svg'
 
 const HeaderContainer = styled(Headroom)`
   font-family: Din;
@@ -16,6 +18,22 @@ const HeaderContainer = styled(Headroom)`
   padding: 0 8.33%;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
   margin: auto;
+  .cleanthat-logo {
+    background: ${() => `left / contain no-repeat url(${MAIN_LOGO})`};
+    &.mobile {
+      background: ${() => `no-repeat left url(${MIN_LOGO})`};
+    }
+  }
+
+  .headroom--pinned {
+    padding: 0 8.33%;
+    background-color: white;
+    max-width: 100vw;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+    .cleanthat-logo {
+      background: ${() => `no-repeat left url(${MIN_LOGO})`};
+    }
+  }
 `
 
 const Layout = styled.div`
@@ -26,93 +44,24 @@ const Layout = styled.div`
   background-color: white;
 `
 
-const Logo = () => <img src={MAIN_LOGO} />
-
-const Nav = styled.div`
-  display: flex;
-  flex-basis: 864px;
-  flex-shrink: 2;
-  justify-content: flex-end;
-  align-items: center;
+const Logo = styled.div`
+  width: 24rem;
   height: 100%;
-  > * :not(:last-child) {
-    margin: 0 45px;
-  }
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
 `
-const NavigationContainer = () => {
-  const [anchorEl, setAnchorEl] = useState(null)
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const linkStyle = {
-    textDecoration: 'none',
-    fontFamily: 'Din'
-  }
-
-  return (
-    <Nav>
-      <NavLink
-        // selected
-        key={0}
-        path="about-us"
-        name="About us"
-      />
-      <NavLink
-        type="button"
-        key={1}
-        path="services"
-        onClick={handleClick}
-        name="Cleaning Services"
-      />
-      <Menu
-        disableScrollLock
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        getContentAnchorEl={null}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-      >
-        <MenuItem onClick={handleClose}>
-          <MenuLink
-            // selected
-            key={0}
-            to="residential-services"
-          >
-            Residential Services
-          </MenuLink>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <MenuLink
-            // selected
-            key={1}
-            to="commercial-services"
-          >
-            Commercial Services
-          </MenuLink>
-        </MenuItem>
-      </Menu>
-      <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
-      <NavLink key={3} path="blog" onClick={() => {}} name="Blog" />
-      <Button variant="commercial">Get a Quote</Button>
-    </Nav>
-  )
-}
 
 const Header = () => {
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   return (
     <HeaderContainer>
       <Fade top>
         <Layout>
-          <Logo />
-          <NavigationContainer />
+          <Logo
+            className={clsx(isDesktop ? 'desktop' : 'mobile', 'cleanthat-logo')}
+          />
+          {isDesktop ? <Menu /> : <MobileMenu />}
         </Layout>
       </Fade>
     </HeaderContainer>

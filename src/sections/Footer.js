@@ -5,7 +5,7 @@ import LOGO from '../media/full-logo.svg'
 import { RouteLink } from '../components/Links'
 
 const FooterContainer = styled(Container)`
-  font-family: Din;
+  font-family: ${({ theme }) => theme.fonts.secondary};
   width: 100%;
   padding-top: 6rem;
   padding-bottom: 4rem;
@@ -38,7 +38,7 @@ const Slogan = styled.p`
   font-size: 2.4rem;
   line-height: 115%;
   margin: 0;
-  width: 332px;
+  width: 32rem;
 `
 
 const NAV_LINKS = [
@@ -64,6 +64,11 @@ const BrandContent = styled.div`
     margin-right: 2rem;
   }
 `
+
+const Background = styled.div`
+  background-color: ${(props) => props.theme.colors.footer.background};
+  width: 100vw;
+`
 function formatNavPath(navName) {
   return navName.toLowerCase().replace(' ', '-')
 }
@@ -77,20 +82,22 @@ const Footer = () => {
   })
 
   return (
-    <FooterContainer>
-      <ContentLayout>
-        <BrandContent>
-          <img src={LOGO} alt="cleanthat logo" />
-          <Slogan>{CLEANTHAT_SLOGAN}</Slogan>
-        </BrandContent>
-        <Nav>{NavLinks}</Nav>
-      </ContentLayout>
-      <StyledDivider />
-      <ContentLayout>
-        <p>c CleanThat </p>
-        <RouteLink to="privacy-policy">Privacy Policy</RouteLink>
-      </ContentLayout>
-    </FooterContainer>
+    <Background>
+      <FooterContainer>
+        <ContentLayout>
+          <BrandContent>
+            <img src={LOGO} alt="cleanthat logo" />
+            <Slogan>{CLEANTHAT_SLOGAN}</Slogan>
+          </BrandContent>
+          <Nav>{NavLinks}</Nav>
+        </ContentLayout>
+        <StyledDivider />
+        <ContentLayout>
+          <p>c CleanThat </p>
+          <RouteLink to="privacy-policy">Privacy Policy</RouteLink>
+        </ContentLayout>
+      </FooterContainer>
+    </Background>
   )
 }
 
