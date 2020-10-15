@@ -1,5 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
+import Carousel from '../../components/Carousel'
 
 import { SectionHeader } from '../../components/Header'
 import ClayIcon from '../../media/clay-icon.svg'
@@ -18,12 +22,19 @@ const TestimonialContainer = styled.div`
   p {
     line-height: 2rem;
     margin: 0;
+    margin-bottom: 4.5rem;
   }
 
   span {
     font-family: ${(props) => props.theme.fonts.headings};
     font-weight: bold;
   }
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+     height: 4rem
+      padding: 5rem;
+    }
+  `}
 `
 
 const TestimonialTile = ({ author = '', details = '' }) => {
@@ -36,41 +47,58 @@ const TestimonialTile = ({ author = '', details = '' }) => {
 }
 
 const Container = styled.section`
-  padding: 8rem 12rem 19rem;
+  overflow: hidden;
+  padding: 8rem 2rem 16rem;
+  position: relative;
+  margin-bottom: 9rem;
+  :before {
+    content: '';
+    width: 93rem;
+    height: 31rem;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.accent};
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -30%) rotate(12deg);
+    z-index: -1;
+  }
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+      padding: 8rem 12rem 19rem;
+    }
+  `}
 `
 
 const Layout = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 40rem;
-  position: relative;
-
-  :after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    height: 75%;
-    width: 60%;
-    bottom: -50%;
-    left: 50%;
-    transform: translate(-50%, -25%);
-    background: center/ contain no-repeat ${() => `url(${ClayIcon})`};
-  }
 `
 
 const TestimonialSection = () => {
   const details =
     'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!'
   const author = 'Christine, PCK'
-
-  return (
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('xl'))
+  return isDesktop ? (
     <Container>
-      <SectionHeader>Our clients come clean</SectionHeader>
+      <SectionHeader align="center">Our clients come clean</SectionHeader>
       <Layout>
         <TestimonialTile details={details} author={author} />
         <TestimonialTile details={details} author={author} />
         <TestimonialTile details={details} author={author} />
       </Layout>
+    </Container>
+  ) : (
+    <Container>
+      <SectionHeader align="center">Our clients come clean</SectionHeader>
+      <Carousel>
+        {[1, 2, 3].map(() => (
+          <TestimonialTile details={details} author={author} />
+        ))}
+      </Carousel>
     </Container>
   )
 }

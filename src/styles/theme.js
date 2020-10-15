@@ -1,4 +1,11 @@
 module.exports = {
+  screens: {
+    xs: 375,
+    sm: 425,
+    md: 768,
+    lg: 1024,
+    xl: 1440
+  },
   screenSizes: {
     mobileXS: '(min-width: 375px))',
     mobileS: '(min-width: 425px)',
@@ -12,6 +19,7 @@ module.exports = {
     textPrimary: '#000000',
     textSecondary: '#FFFFFF',
     placeholder: '#A6A6A6',
+    accent: '#F08D86',
     commercial: {
       primary: '#1933D3',
       primaryLight: '#D2E6FD',

@@ -36,7 +36,7 @@ const HomePage = () => (
           <CTAContainer />
           <CommercialFeatureCard />
           <ResidentialFeatureCard />
-          {/* <TestimonialSection /> */}
+          <TestimonialSection />
         </>
       )
     }}
@@ -54,7 +54,7 @@ const CommercialFeatureCard = () => {
       headerTitle={headerTitle}
       description={description}
       variant="commercial"
-      direction="row"
+      direction="row-reverse"
       imgUrl={CommercialFeatureImg}
     />
   )
@@ -71,7 +71,7 @@ const ResidentialFeatureCard = () => {
       headerTitle={headerTitle}
       description={description}
       variant="residential"
-      direction="row-reverse"
+      direction="row"
       imgUrl={ResidentialFeatureImg}
     />
   )

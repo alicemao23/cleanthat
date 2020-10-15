@@ -4,7 +4,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-const StyledTypography = withStyles((theme) => ({
+const StyledTypography = withStyles(() => ({
   h2: {
     marginTop: '4rem',
     marginBottom: '8rem'
@@ -14,6 +14,9 @@ const StyledTypography = withStyles((theme) => ({
       marginTop: '9rem',
       marginBottom: '12rem'
     }
+  },
+  h3: {
+    marginBottom: '5rem'
   }
 }))(Typography)
 
@@ -24,9 +27,9 @@ const PageHeader = ({ children, ...props }) => (
 )
 
 const SectionHeader = ({ children, ...props }) => (
-  <Typography variant="h3" {...props}>
+  <StyledTypography variant="h3" {...props}>
     {children}
-  </Typography>
+  </StyledTypography>
 )
 const CardHeader = ({ children, ...props }) => (
   <Typography variant="h4" {...props}>

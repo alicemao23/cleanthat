@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import ServiceBannerLayout from '../../components/Containers/BannerCardContainer'
 
 export const ServiceBannerContainer = styled(ServiceBannerLayout)`
+  overflow: hidden;
   background-color: ${({ theme, variant = '' }) =>
     theme.colors[variant].background};
   ${({ theme, direction }) => `
@@ -11,8 +12,7 @@ export const ServiceBannerContainer = styled(ServiceBannerLayout)`
       height: 44.3rem;
       flex-direction: ${direction};
     }
-    @media ${theme.screenSizes.laptopL} {
-    }
+
   `}
 `
 
@@ -20,17 +20,12 @@ export const BannerImage = styled.img`
   flex-grow: 1;
   width: 100%;
   height: auto;
-  ${({ theme }) => `
-    @media ${theme.screenSizes.laptop} {
-      width: 50%;
-    }
-    @media ${theme.screenSizes.laptopL} {
-    }
-  `}
 `
+
 export const Container = styled.div`
   width: 100%;
   padding: 8rem 4rem;
+  flex-shrink: 0;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
       width: 50%;
@@ -52,12 +47,6 @@ export const Label = styled.span`
 export const Header = styled(Typography)`
   margin-top: 1rem;
   margin-bottom: 3.5rem;
-  ${({ theme }) => `
-  @media ${theme.screenSizes.laptop} {
-  }
-  @media ${theme.screenSizes.laptopL} {
-  }
-`}
 `
 
 export const Info = styled.p`

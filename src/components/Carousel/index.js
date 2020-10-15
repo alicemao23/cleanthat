@@ -88,11 +88,11 @@ const Info = styled.p`
   line-height: 2rem;
 `
 
-function SwipeableTextMobileStepper({ type = 'commercial' }) {
+function SwipeableTextMobileStepper({ children }) {
   const classes = useStyles()
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)
-  const maxSteps = TESTIMONIALS.length
+  const maxSteps = children.length
 
   const handleStepChange = (step) => {
     setActiveStep(step)
@@ -107,17 +107,7 @@ function SwipeableTextMobileStepper({ type = 'commercial' }) {
           onChangeIndex={handleStepChange}
           enableMouseEvents
         >
-          {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (
-            <SplitBanner imgUrl={imgPath} borderRadius="8px">
-              <Container>
-                <div>
-                  <Label>{headerLabel}</Label>
-                  <Info>{`"${description}"`}</Info>
-                </div>
-                <Name type={type}>{name}</Name>
-              </Container>
-            </SplitBanner>
-          ))}
+          {children}
         </AutoPlaySwipeableViews>
       </Paper>
       <MobileStepper

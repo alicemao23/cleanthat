@@ -54,7 +54,7 @@ const loadScript = (src) => {
 //   }
 // }
 const breakpoints = {
-  values: globalTheme.screenSizes
+  values: globalTheme.screens
 }
 const palette = {
   primary: {

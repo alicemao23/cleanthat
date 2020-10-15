@@ -230,7 +230,19 @@ const CommercialServicesPage = () => {
         </ServiceIcons>
       </ServicesIconContainer>
       <CarouselContainer>
-        <TestimonyCarousel />
+        <TestimonyCarousel>
+          {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (
+            <SplitBanner imgUrl={imgPath} borderRadius="8px">
+              <Container>
+                <div>
+                  <Label>{headerLabel}</Label>
+                  <Info>{`"${description}"`}</Info>
+                </div>
+                <Name type="commercial">{name}</Name>
+              </Container>
+            </SplitBanner>
+          ))}
+        </TestimonyCarousel>
       </CarouselContainer>
     </Layout>
   )

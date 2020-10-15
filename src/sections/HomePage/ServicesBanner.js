@@ -21,7 +21,6 @@ const ServicesBanner = ({
 }) => {
   return (
     <ServiceBannerContainer variant={variant} direction={direction}>
-      <BannerImage src={imgUrl} />
       <Container>
         <div>
           <Label variant={variant}>{headerLabel}</Label>
@@ -30,6 +29,7 @@ const ServicesBanner = ({
         </div>
         <Button variant={variant}>Get Details</Button>
       </Container>
+      <BannerImage src={imgUrl} />
     </ServiceBannerContainer>
   )
 }
