@@ -19,6 +19,7 @@ const TestimonialContainer = styled.div`
   box-shadow: ${(props) => props.theme.colors.shadow};
   font-size: 1.6rem;
   font-family: ${(props) => props.theme.fonts.body};
+  border-radius: 8px;
   p {
     line-height: 2rem;
     margin: 0;
