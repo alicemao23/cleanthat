@@ -7,15 +7,14 @@ export const StyledCTAContainer = styled.div`
     justify-content: center;
     padding-right: 3.5rem;
     padding-left: 3.5rem;
+    margin-bottom: 9rem;
     @media ${theme.screenSizes.tablet} {
       padding: 0 12rem;
     }
     @media ${theme.screenSizes.laptop} {
       flex-direction: row;
-      margin-bottom: 9rem;
     }
     @media ${theme.screenSizes.laptopL} {
-      padding-bottom: 8rem;
       .header {
         margin-top: 8rem;
       }

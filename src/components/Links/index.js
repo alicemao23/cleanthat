@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 
 import NavLink from './NavLink'
 import LinkAnimated from './LinkAnimated'
+
 const StyledLink = styled(Link)`
   ${({ theme }) => `
     text-decoration: none;

@@ -85,8 +85,11 @@ const typography = {
     fontWeight: 'bold'
   },
   h3: {
-    fontSize: '3.6rem',
-    fontWeight: 900
+    fontSize: '2.4rem',
+    fontWeight: 900,
+    '@media (min-width:768px)': {
+      fontSize: '3.6rem'
+    }
   },
   h4: {
     fontSize: '2.4rem',
