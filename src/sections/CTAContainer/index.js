@@ -1,4 +1,3 @@
-import { FiberPinRounded } from '@material-ui/icons'
 import React from 'react'
 import { StyledCTAContainer, CTACard } from './CTAContainer.style'
 import Button from '../../components/Button/CTAButton'

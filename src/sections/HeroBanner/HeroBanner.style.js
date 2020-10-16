@@ -5,18 +5,33 @@ export const HeroInfoContainer = styled.div`
   padding: 4rem 0 3.5rem;
   flex-shrink: 0;
   flex-grow: 1;
+
   .header {
     margin-bottom: 5rem;
   }
+
+  .subheader {
+    margin: 5rem 0 3.5rem;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
   ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+      .header {
+        margin-top: 2.5rem;
+      }
+    }
     @media ${theme.screenSizes.laptop} {
       min-width: 40%;
       flex: 1;  
       padding-bottom: 4rem;
 
-      .header {
-        margin-top: 2.5rem;
-      }
+      // .header {
+      //   margin-top: 2.5rem;
+      // }
     }
     @media ${theme.screenSizes.laptopL} {
       padding-bottom: 8rem;

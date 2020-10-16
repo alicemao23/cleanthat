@@ -53,7 +53,7 @@ const Logo = styled.div`
 
 const Header = () => {
   const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
   return (
     <HeaderContainer>
       <Fade top>

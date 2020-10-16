@@ -20,6 +20,7 @@ module.exports = {
     textSecondary: '#FFFFFF',
     placeholder: '#A6A6A6',
     accent: '#F08D86',
+    background: '#F5F5F5',
     commercial: {
       primary: '#1933D3',
       primaryLight: '#D2E6FD',

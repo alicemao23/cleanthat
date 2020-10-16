@@ -86,8 +86,8 @@ const typography = {
   },
   h3: {
     fontSize: '2.4rem',
-    fontWeight: 900,
-    '@media (min-width:768px)': {
+    fontWeight: 700,
+    [`@media ${globalTheme.screenSizes.laptop}`]: {
       fontSize: '3.6rem'
     }
   },

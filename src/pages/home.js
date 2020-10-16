@@ -1,12 +1,16 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import Typography from '@material-ui/core/Typography'
+
+import CTAContainer from '../sections/CTAContainer'
+import HeroBanner from '../sections/HeroBanner'
+import PartnershipSection from '../sections/PartnershipSection'
+import TestimonialSection from '../sections/HomePage/Testimonials'
+import ServicesBanner from '../sections/HomePage/ServicesBanner'
+
 import CommercialFeatureImg from '../media/commercial-feature.png'
 import ResidentialFeatureImg from '../media/residential-feature.png'
-
-import TestimonialSection from '../sections/HomePage/Testimonials'
-import HeroBanner from '../sections/HomePage/HeroBanner'
-import CTAContainer from '../sections/HomePage/CTAContainer'
-import ServicesBanner from '../sections/HomePage/ServicesBanner'
+import BannerImage from '../../media/home-banner.svg'
 
 // TODO: query banner from Contentful
 const HomePage = () => (
@@ -32,11 +36,22 @@ const HomePage = () => (
       const { aboutMe, profile } = data.contentfulAbout
       return (
         <>
-          <HeroBanner />
+          <HeroBanner image={BannerImage}>
+            <Typography variant="h1" className="header">
+              Cleaning isn’t just our day job
+            </Typography>
+            <Typography variant="subtitle1">
+              Cleanliness is our middle name. Whether you’re a corporate
+              multi-floor office building, a small business with spunk, or
+              you’re in need of a residential deep clean, we’ve got this. No
+              corner is ignored, no garbage can goes unemptied.
+            </Typography>
+          </HeroBanner>
           <CTAContainer />
           <CommercialFeatureCard />
           <ResidentialFeatureCard />
           <TestimonialSection />
+          <PartnershipSection backgroundColor="background" />
         </>
       )
     }}

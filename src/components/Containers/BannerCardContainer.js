@@ -5,8 +5,8 @@ const BannerCardLayout = styled.div`
   max-width: 1440px;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  border-radius: ${({ borderRadius = 'none' }) => borderRadius};
+  flex-direction: column-reverse;
+  border-radius: ${({ borderRadius = 0 }) => borderRadius};
   overflow: hidden;
   ${({ theme, direction = 'row' }) => `
     @media ${theme.screenSizes.laptop} {
