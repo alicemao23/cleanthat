@@ -38,6 +38,12 @@ const NavigationContainer = () => {
       <NavLink
         // selected
         key={0}
+        path="/"
+        name="Home"
+      />
+      <NavLink
+        // selected
+        key={0}
         path="about-us"
         name="About us"
       />
@@ -78,7 +84,7 @@ const NavigationContainer = () => {
         </MenuItem>
       </Menu>
       <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
-      <NavLink key={3} path="blog" onClick={() => {}} name="Blog" />
+      {/* <NavLink key={3} path="blog" onClick={() => {}} name="Blog" /> */}
       <Button variant="commercial">Get a Quote</Button>
     </Nav>
   )

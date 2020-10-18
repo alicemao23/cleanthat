@@ -29,9 +29,6 @@ export const HeroInfoContainer = styled.div`
       flex: 1;  
       padding-bottom: 4rem;
 
-      // .header {
-      //   margin-top: 2.5rem;
-      // }
     }
     @media ${theme.screenSizes.laptopL} {
       padding-bottom: 8rem;

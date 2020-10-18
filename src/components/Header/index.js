@@ -5,16 +5,22 @@ import { withStyles } from '@material-ui/core/styles'
 const StyledTypography = withStyles(() => ({
   h2: {
     marginTop: '4rem',
-    marginBottom: '8rem'
-  },
-  '@media (min-width: 960px)': {
-    h2: {
-      marginTop: '9rem',
-      marginBottom: '12rem'
+    marginBottom: '8rem',
+    '@media (min-width: 960px)': {
+      h2: {
+        marginTop: '9rem',
+        marginBottom: '12rem'
+      }
     }
   },
   h3: {
     marginBottom: '5rem'
+  },
+  h4: {
+    marginBottom: '3.5rem'
+  },
+  h5: {
+    marginBottom: '1rem'
   }
 }))(Typography)
 
@@ -30,9 +36,9 @@ const SectionHeader = ({ children, ...props }) => (
   </StyledTypography>
 )
 const CardHeader = ({ children, ...props }) => (
-  <Typography variant="h4" {...props}>
+  <StyledTypography variant="h4" {...props}>
     {children}
-  </Typography>
+  </StyledTypography>
 )
 
-export { SectionHeader, PageHeader, CardHeader }
+export { SectionHeader, PageHeader, CardHeader, StyledTypography }

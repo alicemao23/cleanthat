@@ -2,7 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 
-import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
+import {
+  PageHeader,
+  CardHeader,
+  SectionHeader,
+  StyledTypography
+} from '../components/Header'
 import Layout from '../components/Layouts'
 import Container from '../components/Containers/PageContainer.style'
 
@@ -13,24 +18,10 @@ import serviceAreaDivider from '../media/service-area-divider.svg'
 import residentialMap from '../media/residential-map.svg'
 import commercialMap from '../media/commercial-map.svg'
 
-const StyledContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`
-
 const CardContainer = styled.div`
-  flex-basis: 37.3rem;
   position: relative;
   padding-top: 2.5rem;
   padding-bottom: 5rem;
-
-  h3 {
-    margin-bottom: 5rem;
-  }
-  h4 {
-    margin-bottom: 3.5rem;
-  }
 
   .serviceArea& {
     flex-basis: 100%;
@@ -63,23 +54,54 @@ const CardContainer = styled.div`
       flex-basis: 100%;
     }
   }
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+      flex-basis: 37.3rem;
+    }
+    @media ${theme.screenSizes.laptopL} {
+     margin-bottom: 4rem;
+    }
+  `}
+`
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+      justify-content: space-between;
+    }
+    @media ${theme.screenSizes.laptop} {
+      flex-direction: row;
+      justify-content: space-between;
+      > *:not(:last-child) {
+        margin-right: 4rem;
+      }
+    }
+  `}
 `
 
 const ServiceInfoContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptopL} {
+      height: 44.3rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  `}
 `
 const ServiceMap = styled.div`
-  ${({ url }) => `
-  height: 26.7rem;
-  flex-basis: 35rem; 
-  flex-shrink: 0;
-  background:  no-repeat url(${url});
-`}
+  ${({ url = '' }) => `
+    height: 26.7rem;
+    flex-basis: 35rem; 
+    flex-shrink: 0;
+    background:  center / contain no-repeat url(${url});
+  `}
 `
 const ServiceMapInfo = styled.div`
-  width: 20rem;
+  width: 100%;
   ul {
     list-style: none;
     padding: 0;
@@ -87,6 +109,16 @@ const ServiceMapInfo = styled.div`
       font-weight: 900;
     }
   }
+  ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+      width: 50%;
+      margin: 3rem auto auto;
+
+    }
+    @media ${theme.screenSizes.laptopL} {
+      width: 20rem;
+    }
+  `}
 `
 const AddressCard = () => {
   return (
@@ -117,53 +149,75 @@ const HoursCard = () => {
   return (
     <CardContainer className="hours">
       <CardHeader>When to call</CardHeader>
-      <Typography variant="h5" style={{ marginBottom: '10px' }}>
-        Operating hours
-      </Typography>
+      <StyledTypography variant="h5">OPERATING HOURS</StyledTypography>
       <Typography variant="subtitle1">9:00 - 5:00</Typography>
     </CardContainer>
   )
 }
+
+const ServiceMapContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+     
+    }
+    @media ${theme.screenSizes.laptop} {
+      flex-direction: row;
+    }
+    @media ${theme.screenSizes.laptopL} {
+    }
+  `}
+`
 const ServiceAreaCard = () => {
   return (
     <CardContainer className="serviceArea">
       <SectionHeader>Service Area</SectionHeader>
       <ServiceInfoContainer>
-        <ServiceMap url={commercialMap} />
-        <ServiceMapInfo>
-          <CardHeader color="primary">Commercial</CardHeader>
-          <Typography variant="body1" color="primary">
-            <ul>
-              <li>
-                <span>Halton: </span>Oakville
-              </li>
-              <li>
-                <span>Peel: </span>Mississauga
-              </li>
-              <li>
-                <span>York Region: </span>Markham, Richmond Hill, Vaughan
-              </li>
-              <li>
-                <span>Durham: </span>Pickering
-              </li>
-              <li>
-                <span>City of Toronto: </span>Etobicoke, North York, East York,
-                Toronto, Scarborough
-              </li>
-            </ul>
-          </Typography>
-        </ServiceMapInfo>
-        <ServiceMap url={residentialMap} />
-        <ServiceMapInfo>
-          <CardHeader color="secondary">Residential</CardHeader>
-          <Typography variant="body1" color="secondary">
-            <ul>
-              <li>
-                <span>City of Toronto </span>
-              </li>
-            </ul>
-          </Typography>
-        </ServiceMapInfo>
+        <ServiceMapContainer>
+          <ServiceMap url={commercialMap} />
+          <ServiceMapInfo>
+            <CardHeader color="primary">Commercial</CardHeader>
+            <Typography variant="body1" color="primary">
+              <ul>
+                <li>
+                  <span>Halton: </span>
+                  Oakville
+                </li>
+                <li>
+                  <span>Peel: </span>
+                  Mississauga
+                </li>
+                <li>
+                  <span>York Region: </span>
+                  Markham, Richmond Hill, Vaughan
+                </li>
+                <li>
+                  <span>Durham: </span>
+                  Pickering
+                </li>
+                <li>
+                  <span>City of Toronto: </span>
+                  Etobicoke, North York, East York, Toronto, Scarborough
+                </li>
+              </ul>
+            </Typography>
+          </ServiceMapInfo>
+        </ServiceMapContainer>
+        <ServiceMapContainer>
+          <ServiceMap url={residentialMap} />
+          <ServiceMapInfo>
+            <CardHeader color="secondary">Residential</CardHeader>
+            <Typography variant="body1" color="secondary">
+              <ul>
+                <li>
+                  <span>City of Toronto </span>
+                </li>
+              </ul>
+            </Typography>
+          </ServiceMapInfo>
+        </ServiceMapContainer>
       </ServiceInfoContainer>
     </CardContainer>
   )
@@ -178,8 +232,8 @@ const ContactUsPage = () => {
           <AddressCard />
           <ContactCard />
           <HoursCard />
-          <ServiceAreaCard />
         </StyledContainer>
+        <ServiceAreaCard />
       </Container>
     </Layout>
   )
