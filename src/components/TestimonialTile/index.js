@@ -1,4 +1,5 @@
 import React from 'react'
+import clsx from 'clsx'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 import { CardHeader } from '../Header'
@@ -79,7 +80,8 @@ const TestimonialTile = ({
   headerLabel = '',
   description = '',
   name = '',
-  imgUrl = ''
+  imgUrl = '',
+  type = ''
 }) => {
   return (
     <TestimonialContainer>
@@ -90,7 +92,10 @@ const TestimonialTile = ({
           <Typography variant="h4">{headerLabel}</Typography>
           <Description variant="subtitle2">{`"${description}"`}</Description>
         </div>
-        <Name variant="h5" color="primary">
+        <Name
+          variant="h5"
+          color={clsx(type === 'residential' ? 'secondary' : 'primary')}
+        >
           {name}
         </Name>
       </Container>

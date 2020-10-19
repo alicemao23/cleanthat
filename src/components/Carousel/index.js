@@ -1,33 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import MobileStepper from '@material-ui/core/MobileStepper'
 import Paper from '@material-ui/core/Paper'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
 
-import SplitBanner from '../Containers/SplitBanner'
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
-
-const TESTIMONIALS = [
-  {
-    name: 'Christine Pratt',
-    headerLabel: 'Our clients come clean',
-    description:
-      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
-  },
-  {
-    name: 'Christine Pratt',
-    headerLabel: 'Our clients come clean',
-    description:
-      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
-  }
-]
 
 const useStyles = makeStyles((theme) => ({
   root: {

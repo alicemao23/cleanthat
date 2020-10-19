@@ -3,8 +3,8 @@ import Button from '@material-ui/core/Button'
 
 const StyledButton = styled(Button)`
   ${({ theme, variant = 'commercial' }) => `
+    width: 100%;  
     min-width: 16.5rem;
-    width: 100%;
     height: 4rem;
     font-size: 1.4rem;
     border-radius: 5.4rem;
@@ -31,6 +31,7 @@ export const StyledLink = styled.a`
   -moz-appearance: button;
   appearance: button;
   text-decoration: none;
+  width: 100%;
   min-width: 16.5rem;
   height: 4rem;
   font-size: 1.4rem;
@@ -42,6 +43,9 @@ export const StyledLink = styled.a`
   ${({ theme, variant = 'commercial' }) => `
     background-color: ${theme.colors[variant].primary};
     color: ${theme.colors[variant].text};
+    @media ${theme.screenSizes.tablet} {
+      width: 16.5rem;
+    }
   `}
 `
 
