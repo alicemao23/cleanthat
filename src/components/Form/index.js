@@ -1,19 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Formik } from 'formik'
-import Typography from '@material-ui/core/Typography'
+import { CardHeader } from '../Header'
 
 const FormContainer = styled.div`
-  min-width: 335px;
+  ${({ theme }) => `
+  height: max-content;
+  min-width: 33.5rem;
   padding: 6rem 4rem;
   border-radius: 8px;
-  margin-top: -18rem;
   background-color: white;
+  margin-top: -14rem;
+  margin-bottom: 12rem;
+  position: relative;
+  :before {
+    content: '';
+    width: 100%;
+    height: 17rem;
+    border-radius: 50%;
+    background-color: ${theme.colors.commercial.primary};
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate(-38%, 50%) rotate(-15deg);
+    z-index: -1;
+  }
+    @media ${theme.screenSizes.laptop} {
+      margin-top: -14rem;
+      width: 41.3rem;
+    }
+    @media ${theme.screenSizes.laptopL} {
+      margin-top: -18rem;
+    }
+  `}
 `
+
 const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
   return (
     <FormContainer>
-      <Typography variant="h4">{header}</Typography>
+      <CardHeader>{header}</CardHeader>
       <Formik
         initialValues={initialFormValue}
         validate={(values) => {

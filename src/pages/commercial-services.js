@@ -11,17 +11,50 @@ import HeroBackground from '../media/residentialHero.svg'
 import Form from '../components/Form'
 import Button from '../components/Button/CTAButton'
 import TestimonyCarousel from '../components/Carousel'
+import TestimonialTile from '../components/TestimonialTile'
 
 import { COMMERCIAL_SERVICES_LOGO_MAP } from '../shared/constants'
 
+const TESTIMONIALS = [
+  {
+    name: 'Christine Pratt',
+    headerLabel: 'Our clients come clean',
+    description:
+      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
+    imgPath:
+      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
+  }
+  // {
+  //   name: 'Christine Pratt',
+  //   headerLabel: 'Our clients come clean',
+  //   description:
+  //     'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
+  //   imgPath:
+  //     'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
+  // }
+]
+
 const ContainerLayout = styled.div`
-  padding: 8rem 12rem;
+  padding: 8rem 4rem;
+
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptopL} {
+      padding: 8rem 12rem;
+    }
+  `}
 `
 const HeroContainer = styled(ContainerLayout)`
   display: flex;
+  flex-direction: column-reverse;
   justify-content: space-between;
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+      flex-direction: row;
+    }
+  `}
 `
 const CarouselContainer = styled(ContainerLayout)`
+  padding-bottom: 19rem;
   position: relative;
   :before {
     content: '';
@@ -35,18 +68,37 @@ const CarouselContainer = styled(ContainerLayout)`
     transform: translate(-50%, -30%) rotate(12deg);
     z-index: -1;
   }
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+      padding-bottom: 19rem;
+
+    }
+  `}
 `
 const HeroDetails = styled.div`
-  width: 500px;
+  ${({ theme }) => `
+    @media ${theme.screenSizes.laptop} {
+      width: 500px;
+    }
+  `}
 `
 
 const BackgroundContainer = styled.div`
   background-image: ${() => `url(${HeroBackground})`};
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   overflow: auto;
-  padding-left: 12rem;
+  padding-left: 4rem;
+
+  ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+      padding-left: 9rem;
+    }
+    @media ${theme.screenSizes.laptopL} {
+      padding-left: 12rem;
+    }
+  `}
 `
 const ServicesIconContainer = styled(ContainerLayout)`
   background-color: ${({ theme }) => theme.colors.commercial.background};
@@ -60,18 +112,28 @@ const ServicesIconContainer = styled(ContainerLayout)`
 `
 
 const ServiceIcons = styled.div`
+  ${({ theme }) => `
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  flex-wrap: wrap;
   > * {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .label {
-      margin-top: 3.5rem;
+    flex-basis: 45%;
+      @media ${theme.screenSizes.tablet} {
+        flex-basis: 30%;
+      }
+ 
+      .label {
+        margin-top: 3.5rem;
+      }
     }
-  }
+    @media ${theme.screenSizes.laptopL} {
+     flex-wrap: nowrap;
+    }
+  `}
 `
 
 const Icon = styled.img`
@@ -97,6 +159,7 @@ const ServiceList = styled.ul`
     margin-bottom: 1.5rem;
   }
 `
+
 const CommercialServicesPage = () => {
   const initialFormValue = {
     name: '',
@@ -111,7 +174,6 @@ const CommercialServicesPage = () => {
       <BackgroundContainer>
         <PageHeader>Commercial Cleaning</PageHeader>
       </BackgroundContainer>
-
       <HeroContainer>
         <HeroDetails>
           <StyledCardHeader>
@@ -232,15 +294,13 @@ const CommercialServicesPage = () => {
       <CarouselContainer>
         <TestimonyCarousel>
           {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (
-            <SplitBanner imgUrl={imgPath} borderRadius="8px">
-              <Container>
-                <div>
-                  <Label>{headerLabel}</Label>
-                  <Info>{`"${description}"`}</Info>
-                </div>
-                <Name type="commercial">{name}</Name>
-              </Container>
-            </SplitBanner>
+            <TestimonialTile
+              headerTitle="Our clients come clean"
+              description={description}
+              headerLabe={headerLabel}
+              imgUrl={imgPath}
+              name={name}
+            />
           ))}
         </TestimonyCarousel>
       </CarouselContainer>

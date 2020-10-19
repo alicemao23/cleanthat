@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 10px;
+    overflow-x: hidden;
   }
     
   body {
@@ -44,15 +45,6 @@ const loadScript = (src) => {
   document.getElementsByTagName('body')[0].appendChild(tag)
 }
 
-// const theme = {
-//   ...preset,
-//   colors,
-//   fonts: {
-//     body: 'Cabin, Open Sans, sans-serif',
-//     heading: 'inherit',
-//     monospace: 'monospace'
-//   }
-// }
 const breakpoints = {
   values: globalTheme.screens
 }
@@ -81,8 +73,11 @@ const typography = {
     }
   },
   h2: {
-    fontSize: '4.8rem',
-    fontWeight: 'bold'
+    fontSize: '3.6rem',
+    fontWeight: 'bold',
+    '@media (min-width:768px)': {
+      fontSize: '4.8rem'
+    }
   },
   h3: {
     fontSize: '2.4rem',

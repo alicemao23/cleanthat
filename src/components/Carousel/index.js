@@ -60,34 +60,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Container = styled.div`
-  width: 50%;
-  padding: 8rem 9rem 5rem 6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: white;
-`
-const Label = styled.span`
-  font-size: 2.4rem;
-  margin-bottom: 3.5rem;
-  font-weight: bold;
-`
-
-const Name = styled.h3`
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  color: ${({ theme, type = 'commercial' }) => theme.colors[type].primary};
-  text-transform: uppercase;
-`
-
-const Info = styled.p`
-  font-family: Din;
-  font-size: 1.6rem;
-  line-height: 2rem;
-`
-
 function SwipeableTextMobileStepper({ children }) {
   const classes = useStyles()
   const theme = useTheme()

@@ -21,10 +21,10 @@ export const BannerImage = styled.img`
   width: 100%;
   height: auto;
   ${({ theme }) => `
-  @media ${theme.screenSizes.laptop} {
-    width: 50%;
-  }
-`}
+    @media ${theme.screenSizes.laptop} {
+      width: 50%;
+    }
+  `}
 `
 
 export const Container = styled.div`

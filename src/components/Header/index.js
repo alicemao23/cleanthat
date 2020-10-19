@@ -6,11 +6,9 @@ const StyledTypography = withStyles(() => ({
   h2: {
     marginTop: '4rem',
     marginBottom: '8rem',
-    '@media (min-width: 960px)': {
-      h2: {
-        marginTop: '9rem',
-        marginBottom: '12rem'
-      }
+    '@media (min-width: 1024px)': {
+      marginTop: '9rem',
+      marginBottom: '12rem'
     }
   },
   h3: {
