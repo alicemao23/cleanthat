@@ -43,7 +43,7 @@ export const StyledLink = styled.a`
   ${({ theme, variant = 'commercial' }) => `
     background-color: ${theme.colors[variant].primary};
     color: ${theme.colors[variant].text};
-    @media ${theme.screenSizes.tablet} {
+        @media ${theme.screenSizes.tablet} {
       width: 16.5rem;
     }
   `}

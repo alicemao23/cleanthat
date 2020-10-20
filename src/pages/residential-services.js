@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
-import Layout from '../components/Layouts'
 
 import HeroBackground from '../media/commercial-hero.svg'
 import { StyledLink as Button } from '../components/Button/CTAButton'
@@ -158,7 +157,7 @@ const ServiceList = styled.ul`
 `
 const ResidentialServicesPage = () => {
   return (
-    <Layout>
+    <>
       <BackgroundContainer>
         <PageHeader>Residential Cleaning</PageHeader>
       </BackgroundContainer>
@@ -230,7 +229,7 @@ const ResidentialServicesPage = () => {
           ))}
         </TestimonyCarousel>
       </CarouselContainer>
-    </Layout>
+    </>
   )
 }
 

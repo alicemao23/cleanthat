@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import clsx from 'clsx'
 import styled from 'styled-components'
 import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
+import MuiMenuItem from '@material-ui/core/MenuItem'
 
-import { NavLink, MenuLink } from '../Links'
+import { NavLink, Dropdown } from '../Links'
 import Button from '../Button/CTAButton'
 
 const Nav = styled.div`
@@ -17,6 +18,13 @@ const Nav = styled.div`
     margin: 0 45px;
   }
 `
+
+const MenuItem = styled(MuiMenuItem)`
+  height: 5.4rem;
+  :hover {
+    background-color: initial;
+  }
+`
 const NavigationContainer = () => {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -28,32 +36,22 @@ const NavigationContainer = () => {
     setAnchorEl(null)
   }
 
-  const linkStyle = {
-    textDecoration: 'none',
-    fontFamily: 'Din'
-  }
-
   return (
     <Nav>
-      <NavLink
-        // selected
-        key={0}
-        path="/"
-        name="Home"
-      />
-      <NavLink
-        // selected
-        key={0}
-        path="about-us"
-        name="About us"
-      />
-      <NavLink
+      <NavLink key={0} to="/" activeClassName="active">
+        Home
+      </NavLink>
+      <NavLink key={0} to="about-us" activeClassName="active">
+        About us
+      </NavLink>
+      <Dropdown
         type="button"
         key={1}
-        path="services"
         onClick={handleClick}
-        name="Cleaning Services"
-      />
+        className={clsx(anchorEl ? 'isOpen' : '')}
+      >
+        Cleaning Services
+      </Dropdown>
       <Menu
         disableScrollLock
         id="simple-menu"
@@ -65,25 +63,24 @@ const NavigationContainer = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <MenuItem onClick={handleClose}>
-          <MenuLink
-            // selected
-            key={0}
-            to="residential-services"
-          >
+          <NavLink key={0} to="residential-services" activeClassName="active">
             Residential Services
-          </MenuLink>
+          </NavLink>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <MenuLink
-            // selected
-            key={1}
-            to="commercial-services"
-          >
+          <NavLink key={1} to="commercial-services" activeClassName="active">
             Commercial Services
-          </MenuLink>
+          </NavLink>
         </MenuItem>
       </Menu>
-      <NavLink key={2} path="contact-us" onClick={() => {}} name="Contact us" />
+      <NavLink
+        key={2}
+        to="contact-us"
+        onClick={() => {}}
+        activeClassName="active"
+      >
+        Contact us
+      </NavLink>
       {/* <NavLink key={3} path="blog" onClick={() => {}} name="Blog" /> */}
       <Button variant="commercial">Get a Quote</Button>
     </Nav>

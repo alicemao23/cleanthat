@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography'
 import { Field } from 'formik'
 
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
-import Layout from '../components/Layouts'
 import TextField from '../components/TextField'
 import Select from '../components/Select'
 import HeroBackground from '../media/residentialHero.svg'
@@ -44,12 +43,18 @@ const ContainerLayout = styled.div`
   `}
 `
 const HeroContainer = styled(ContainerLayout)`
+  padding: 8rem 2rem;
+
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
+      padding: 8rem 4rem;
       flex-direction: row;
+    }
+    @media ${theme.screenSizes.laptopL} {
+      padding: 8rem 12rem;
     }
   `}
 `
@@ -76,9 +81,12 @@ const CarouselContainer = styled(ContainerLayout)`
   `}
 `
 const HeroDetails = styled.div`
+  padding-left: 2rem;
+  padding-right: 2rem;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
-      width: 500px;
+      width: 50rem;
+      padding: 0;
     }
   `}
 `
@@ -170,7 +178,7 @@ const CommercialServicesPage = () => {
     frequency: ''
   }
   return (
-    <Layout>
+    <>
       <BackgroundContainer>
         <PageHeader>Commercial Cleaning</PageHeader>
       </BackgroundContainer>
@@ -305,7 +313,7 @@ const CommercialServicesPage = () => {
           ))}
         </TestimonyCarousel>
       </CarouselContainer>
-    </Layout>
+    </>
   )
 }
 

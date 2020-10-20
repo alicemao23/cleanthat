@@ -6,7 +6,6 @@ import CTAContainer from '../sections/CTAContainer'
 import SplitBanner from '../sections/AboutUsPage/SplitBanner'
 import PreferredPartner from '../sections/AboutUsPage/PreferredPartner'
 import PartnershipSection from '../sections/PartnershipSection'
-import Layout from '../components/Layouts'
 
 import BannerImage from '../media/about-us-herobanner.svg'
 import FeatureCardImage from '../media/feature-card-image1.png'
@@ -35,7 +34,7 @@ const AboutUsPage = () => (
   //   render={(data) => {
   //     const { aboutMe, profile } = data.contentfulAbout
   //     return (
-  <Layout>
+  <>
     <HeroBanner image={BannerImage}>
       <Typography variant="h1" className="header">
         About Us
@@ -68,7 +67,7 @@ const AboutUsPage = () => (
     <PartnershipSection />
     <FeatureCard />
     <ReverseFeatureCard />
-  </Layout>
+  </>
   //     )
   //   }}
   // />

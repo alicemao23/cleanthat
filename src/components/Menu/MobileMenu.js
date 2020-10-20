@@ -30,42 +30,25 @@ const MenuDrawer = () => {
   return (
     <MenuContainer>
       <Nav>
-        <NavLink
-          // selected
-          key={0}
-          path="home"
-          name="home"
-        />
-        <NavLink
-          // selected
-          key={1}
-          path="about-us"
-          name="About us"
-        />
-        <NavLink
-          // selected
-          key={2}
-          path="commercial-services"
-          name="Commercial Services"
-        />
-        <NavLink
-          // selected
-          key={3}
-          path="residential-services"
-          name="Residential Services"
-        />
-        <NavLink
-          // selected
-          key={4}
-          path="contact-us"
-          name="Contact us"
-        />
-        <NavLink
-          // selected
-          key={5}
-          path="blog"
-          name="Blog"
-        />
+        <NavLink key={1} to="/" activeClassName="active">
+          Home
+        </NavLink>
+        <NavLink key={2} to="about-us" activeClassName="active">
+          About us
+        </NavLink>
+        <NavLink key={3} to="commercial-services" activeClassName="active">
+          Commercial Services
+        </NavLink>
+        <NavLink key={4} to="residential-services" activeClassName="active">
+          Residential Services
+        </NavLink>
+
+        <NavLink key={5} to="contact-us" activeClassName="active">
+          Contact us
+        </NavLink>
+        {/* <NavLink key={6} to="blog" activeClassName="active">
+          Blog
+        </NavLink> */}
       </Nav>
       <Button variant="commercial">Get a Quote</Button>
     </MenuContainer>

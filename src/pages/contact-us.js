@@ -8,7 +8,6 @@ import {
   SectionHeader,
   StyledTypography
 } from '../components/Header'
-import Layout from '../components/Layouts'
 import Container from '../components/Containers/PageContainer.style'
 
 import addressDivider from '../media/address-divider.svg'
@@ -225,17 +224,15 @@ const ServiceAreaCard = () => {
 
 const ContactUsPage = () => {
   return (
-    <Layout>
-      <Container>
-        <PageHeader>Contact Us</PageHeader>
-        <StyledContainer>
-          <AddressCard />
-          <ContactCard />
-          <HoursCard />
-        </StyledContainer>
-        <ServiceAreaCard />
-      </Container>
-    </Layout>
+    <Container>
+      <PageHeader>Contact Us</PageHeader>
+      <StyledContainer>
+        <AddressCard />
+        <ContactCard />
+        <HoursCard />
+      </StyledContainer>
+      <ServiceAreaCard />
+    </Container>
   )
 }
 

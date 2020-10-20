@@ -1,67 +1,74 @@
-const contentful = require('contentful');
-const manifestConfig = require('./manifest-config');
-require('dotenv').config();
+const contentful = require('contentful')
+const manifestConfig = require('./manifest-config')
+require('dotenv').config()
 
-const { ACCESS_TOKEN, SPACE_ID, ANALYTICS_ID, DETERMINISTIC } = process.env;
+const { ACCESS_TOKEN, SPACE_ID, ANALYTICS_ID, DETERMINISTIC } = process.env
 
-// TODO: Fix import of access token and IDs 
+// TODO: Fix import of access token and IDs
 const client = contentful.createClient({
   space: SPACE_ID,
-  accessToken: ACCESS_TOKEN,
-});
-const getAboutEntry = entry => entry.sys.contentType.sys.id === 'about';
+  accessToken: ACCESS_TOKEN
+})
+const getAboutEntry = (entry) => entry.sys.contentType.sys.id === 'about'
 
 const plugins = [
   'gatsby-plugin-react-helmet',
   {
     resolve: 'gatsby-plugin-manifest',
-    options: manifestConfig,
+    options: manifestConfig
   },
   'gatsby-plugin-styled-components',
   {
     resolve: 'gatsby-source-contentful',
     options: {
       spaceId: SPACE_ID,
-      accessToken: ACCESS_TOKEN,
-    },
+      accessToken: ACCESS_TOKEN
+    }
   },
   {
-    resolve: "gatsby-source-filesystem",
+    resolve: 'gatsby-source-filesystem',
     options: {
-      name: "fonts",
+      name: 'fonts',
       path: `${__dirname}/static/fonts/`
     }
   },
-  'gatsby-transformer-remark',
-  'gatsby-plugin-offline',
-];
-
-module.exports = client.getEntries().then(entries => {
-
-  const { mediumUser } = entries.items.find(getAboutEntry).fields;
-
-  plugins.push({
-    resolve: 'gatsby-source-medium',
+  {
+    resolve: `gatsby-plugin-layout`,
     options: {
-      username: mediumUser || '@medium',
-    },
-  });
+      component: require.resolve(`./src/components/Layouts`)
+    }
+  },
+  'gatsby-transformer-remark',
+  'gatsby-plugin-offline'
+]
 
-  if (ANALYTICS_ID) {
+module.exports = client
+  .getEntries()
+  .then((entries) => {
+    const { mediumUser } = entries.items.find(getAboutEntry).fields
+
     plugins.push({
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-source-medium',
       options: {
-        trackingId: ANALYTICS_ID,
-      },
-    });
-  }
+        username: mediumUser || '@medium'
+      }
+    })
 
-  return {
-    siteMetadata: {
-      isMediumUserDefined: !!mediumUser,
-      deterministicBehaviour: !!DETERMINISTIC,
-    },
-    plugins,
-  };
-})
-  .catch(err => console.log('error:', err));
+    if (ANALYTICS_ID) {
+      plugins.push({
+        resolve: 'gatsby-plugin-google-analytics',
+        options: {
+          trackingId: ANALYTICS_ID
+        }
+      })
+    }
+
+    return {
+      siteMetadata: {
+        isMediumUserDefined: !!mediumUser,
+        deterministicBehaviour: !!DETERMINISTIC
+      },
+      plugins
+    }
+  })
+  .catch((err) => console.log('error:', err))
