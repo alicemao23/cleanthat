@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
-import { Field } from 'formik'
 
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
 import TextField from '../components/TextField'
@@ -214,7 +213,7 @@ const CommercialServicesPage = () => {
           </ServiceList>
         </HeroDetails>
         <Form initialFormValue={initialFormValue}>
-          <Field
+          {/* <Field
             type="text"
             name="name"
             component={TextField}
@@ -281,8 +280,7 @@ const CommercialServicesPage = () => {
             renderValue={(val) => {
               return val || 'Select one'
             }}
-          />
-          <Button variant="commercial"> send </Button>
+          /> */}
         </Form>
       </HeroContainer>
       <ServicesIconContainer>

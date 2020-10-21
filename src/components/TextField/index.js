@@ -33,38 +33,14 @@ const StyledTextField = withStyles((theme) => ({
 }))(MuiTextField)
 
 const TextField = ({ label, id, placeholder, classes, ...props }) => {
-  const {
-    field: { value, name },
-    field,
-    form: { touched, initialStatus, errors }
-  } = props
-
-  // const isTextFieldPrepopulated = name in initialStatus
-
-  const onChange = (event) => {
-    const {
-      field: { name },
-      form: { handleChange, setFieldTouched, touched }
-    } = props
-
-    if (!touched[name]) {
-      setFieldTouched(name, true)
-    }
-    handleChange(event)
-  }
-
   return (
     <div>
       <StyledTextField
-        {...field}
-        error={errors[name] && touched[name]}
-        onChange={onChange}
         className={classes}
         label={label}
         InputLabelProps={{
           shrink: true
         }}
-        value={value}
         placeholder={placeholder}
         // InputProps={{ disabled: isTextFieldPrepopulated }}
         colors="primary"

@@ -6,8 +6,6 @@ import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import { makeStyles } from '@material-ui/core/styles'
 
-// import FormikError from '../Error'
-
 const useStyles = makeStyles((theme) => ({
   label: {
     color: theme.colors.commercial.primary
@@ -57,7 +55,6 @@ const StyledFormControl = styled(FormControl)`
 `
 
 const SelectField = ({
-  field,
   id,
   selectOptions,
   placeholder,
@@ -65,27 +62,18 @@ const SelectField = ({
   required,
   ...props
 }) => {
-  const {
-    form: { touched, errors, values }
-  } = props
-  const { name = '' } = field
   const classes = useStyles()
   return (
     <SelectContainer>
-      <StyledFormControl
-        className={classes.formControl}
-        error={errors[name] && touched[name]}
-        required={required}
-      >
+      <StyledFormControl className={classes.formControl} required={required}>
         <InputLabel shrink className={classes.label}>
           {label}
         </InputLabel>
         <Select
           label={label}
-          className={values[name] ? classes.menuItem : classes.placeholder}
+          // className={values[name] ? classes.menuItem : classes.placeholder}
           id={id}
-          renderValue={(val) => (val ? val : 'Select one')}
-          {...field}
+          renderValue={(val) => val || 'Select one'}
           {...props}
         >
           {placeholder && (

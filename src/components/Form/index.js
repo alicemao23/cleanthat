@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Formik } from 'formik'
+import { useForm, Controller } from 'react-hook-form'
 import { CardHeader } from '../Header'
+import Button from '../Button/CTAButton'
+import TextField from '../TextField'
+import Select from '../Select'
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   ${({ theme }) => `
   height: max-content;
   min-width: 33.5rem;
@@ -36,31 +39,100 @@ const FormContainer = styled.div`
 `
 
 const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
+  const { register, handleSubmit, watch, errors, control } = useForm()
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+      )
+      .join('&')
+  }
+
+  const onSubmit = (data) => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'commercial-cleaning-inquiry', ...data })
+    })
+      .then(() => alert('Success!'))
+      .catch((error) => alert(error))
+  }
   return (
-    <FormContainer>
+    <FormContainer name="contact" onSubmit={handleSubmit(onSubmit)}>
       <CardHeader>{header}</CardHeader>
-      <Formik
-        initialValues={initialFormValue}
-        validate={(values) => {
-          const errors = {}
-          if (!values.email) {
-            errors.email = 'Required'
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = 'Invalid email address'
-          }
-          return errors
+      <input
+        type="hidden"
+        name="form-name"
+        value="commercial-cleaning-inquiry"
+      />
+      <TextField
+        inputRef={register}
+        name="name"
+        type="text"
+        placeholder="Your first and last name"
+        label="name"
+        // required
+      />
+      <TextField
+        inputRef={register}
+        name="email"
+        type="email"
+        label="email"
+        id="email"
+        placeholder="johndoe@email.com"
+        // required
+      />
+      <TextField
+        inputRef={register}
+        name="phone"
+        label="phone (optional)"
+        id="phone"
+        placeholder="123-456-7890"
+      />
+      <TextField
+        inputRef={register}
+        name="inquiry"
+        label="How can we help you?"
+        id="inquiry"
+        placeholder="Your inquiry"
+      />
+      <Select
+        type="text"
+        name="officeType"
+        inputRef={register}
+        label="Office type"
+        id="office-type"
+        displayEmpty
+        selectOptions={[
+          'commericial',
+          'retail',
+          'Advertising',
+          'Community  Center',
+          'Others'
+        ]}
+      />
+      <Select
+        type="text"
+        name="frequency"
+        inputRef={register}
+        label="Frequency of clean"
+        id="frenquency"
+        placeholder="select one"
+        displayEmpty
+        selectOptions={[
+          'commercial',
+          'retail',
+          'Advertising',
+          'Community  Center',
+          'Others'
+        ]}
+        renderValue={(val) => {
+          return val || 'Select one'
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
-        }}
-      >
-        {({ handleSubmit }) => <form onSubmit={handleSubmit}>{children}</form>}
-      </Formik>
+      />
+      <Button type="submit" variant="commercial">
+        send
+      </Button>{' '}
     </FormContainer>
   )
 }
