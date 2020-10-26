@@ -13,7 +13,7 @@ import { RESIDENTIAL_SERVICES_LOGO_MAP } from '../shared/constants'
 
 const TESTIMONIALS = [
   {
-    name: 'Christine Pratt',
+    name: 'Christine Pratt, PCK',
     headerLabel: 'Our clients come clean',
     description:
       'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
@@ -21,7 +21,7 @@ const TESTIMONIALS = [
       'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
   },
   {
-    name: 'Christine Pratt',
+    name: 'Christine Pratt, PCK',
     headerLabel: 'Our clients come clean',
     description:
       'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
@@ -31,7 +31,8 @@ const TESTIMONIALS = [
 ]
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
-
+  max-width: 1440px;
+  margin: auto;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptopL} {
       padding: 8rem 12rem;
@@ -84,9 +85,12 @@ const BackgroundContainer = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   overflow: auto;
-  padding-left: 4rem;
 
-  ${({ theme }) => `
+  .header {
+    padding-left: 4rem;
+    max-width: 1440px;
+    margin: auto;
+    ${({ theme }) => `
     @media ${theme.screenSizes.tablet} {
       padding-left: 9rem;
     }
@@ -94,17 +98,20 @@ const BackgroundContainer = styled.div`
       padding-left: 12rem;
     }
   `}
+  }
 `
 
 const ServicesIconContainer = styled(ContainerLayout)`
-  background-color: ${({ theme }) => theme.colors.residential.background};
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  max-width: 1440px;
   > .header {
     margin-bottom: 5rem;
   }
+`
+const ServicesIconBackground = styled.div`
+  background-color: ${({ theme }) => theme.colors.residential.background};
 `
 
 const ServiceIcons = styled.div`
@@ -159,7 +166,9 @@ const ResidentialServicesPage = () => {
   return (
     <>
       <BackgroundContainer>
-        <PageHeader>Residential Cleaning</PageHeader>
+        <div className="header">
+          <PageHeader>Residential Cleaning</PageHeader>
+        </div>
       </BackgroundContainer>
 
       <HeroContainer>
@@ -200,21 +209,23 @@ const ResidentialServicesPage = () => {
           </Button>
         </HeroDetails>
       </HeroContainer>
-      <ServicesIconContainer>
-        <SectionHeader className="header">What we do</SectionHeader>
-        <ServiceIcons>
-          {RESIDENTIAL_SERVICES_LOGO_MAP.map(({ label, icon }) => {
-            return (
-              <div>
-                <Icon src={icon} />
-                <Typography className="label" variant="h5" color="secondary">
-                  {label}
-                </Typography>
-              </div>
-            )
-          })}
-        </ServiceIcons>
-      </ServicesIconContainer>
+      <ServicesIconBackground>
+        <ServicesIconContainer>
+          <SectionHeader className="header">What we do</SectionHeader>
+          <ServiceIcons>
+            {RESIDENTIAL_SERVICES_LOGO_MAP.map(({ label, icon }) => {
+              return (
+                <div>
+                  <Icon src={icon} />
+                  <Typography className="label" variant="h5" color="secondary">
+                    {label}
+                  </Typography>
+                </div>
+              )
+            })}
+          </ServiceIcons>
+        </ServicesIconContainer>
+      </ServicesIconBackground>
       <CarouselContainer>
         <TestimonyCarousel>
           {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (

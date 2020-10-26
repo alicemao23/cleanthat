@@ -1,6 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import Headroom from 'react-headroom'
+import { navigate } from 'gatsby'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
 
@@ -59,6 +60,9 @@ const Header = () => {
       <Fade top>
         <Layout>
           <Logo
+            onClick={() => {
+              navigate('/home')
+            }}
             className={clsx(isDesktop ? 'desktop' : 'mobile', 'cleanthat-logo')}
           />
           {isDesktop ? <Menu /> : <MobileMenu />}

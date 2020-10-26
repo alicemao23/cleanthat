@@ -34,7 +34,8 @@ const TESTIMONIALS = [
 
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
-
+  max-width: 1440px;
+  margin: auto;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptopL} {
       padding: 8rem 12rem;
@@ -96,9 +97,11 @@ const BackgroundContainer = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   overflow: auto;
-  padding-left: 4rem;
-
-  ${({ theme }) => `
+  .header {
+    padding-left: 4rem;
+    max-width: 1440px;
+    margin: auto;
+    ${({ theme }) => `
     @media ${theme.screenSizes.tablet} {
       padding-left: 9rem;
     }
@@ -106,6 +109,7 @@ const BackgroundContainer = styled.div`
       padding-left: 12rem;
     }
   `}
+  }
 `
 const ServicesIconContainer = styled(ContainerLayout)`
   background-color: ${({ theme }) => theme.colors.commercial.background};
@@ -117,7 +121,9 @@ const ServicesIconContainer = styled(ContainerLayout)`
     margin-bottom: 5rem;
   }
 `
-
+const ServicesIconBackground = styled.div`
+  background-color: ${({ theme }) => theme.colors.commercial.background};
+`
 const ServiceIcons = styled.div`
   ${({ theme }) => `
   width: 100%;
@@ -179,7 +185,9 @@ const CommercialServicesPage = () => {
   return (
     <>
       <BackgroundContainer>
-        <PageHeader>Commercial Cleaning</PageHeader>
+        <div className="header">
+          <PageHeader>Commercial Cleaning</PageHeader>
+        </div>
       </BackgroundContainer>
 
       <HeroContainer>
@@ -212,92 +220,25 @@ const CommercialServicesPage = () => {
             <li>Shared office spaces</li>
           </ServiceList>
         </HeroDetails>
-        <Form initialFormValue={initialFormValue}>
-          {/* <Field
-            type="text"
-            name="name"
-            component={TextField}
-            label="Name"
-            id="name"
-            placeholder="Your first and last name"
-            required
-          />
-          <Field
-            type="text"
-            name="email"
-            component={TextField}
-            label="email"
-            id="email"
-            placeholder="johndoe@email.com"
-            required
-          />
-          <Field
-            type="text"
-            name="phone"
-            component={TextField}
-            label="phone (optional)"
-            id="phone"
-            placeholder="123-456-7890"
-          />
-          <Field
-            type="text"
-            name="inquiry"
-            component={TextField}
-            label="How can we help you?"
-            id="inquiry"
-            placeholder="Your inquiry"
-          />
-          <Field
-            type="text"
-            name="officeType"
-            component={Select}
-            label="Office type"
-            id="office-type"
-            displayEmpty
-            selectOptions={[
-              'commericial',
-              'retail',
-              'Advertising',
-              'Community  Center',
-              'Others'
-            ]}
-          />
-          <Field
-            type="text"
-            name="frequency"
-            component={Select}
-            label="Frequency of clean"
-            id="frenquency"
-            placeholder="select one"
-            displayEmpty
-            selectOptions={[
-              'commercial',
-              'retail',
-              'Advertising',
-              'Community  Center',
-              'Others'
-            ]}
-            renderValue={(val) => {
-              return val || 'Select one'
-            }}
-          /> */}
-        </Form>
+        <Form initialFormValue={initialFormValue} />
       </HeroContainer>
-      <ServicesIconContainer>
-        <SectionHeader className="header">What we do</SectionHeader>
-        <ServiceIcons>
-          {COMMERCIAL_SERVICES_LOGO_MAP.map(({ label, icon }) => {
-            return (
-              <div>
-                <Icon src={icon} />
-                <Typography className="label" variant="h5" color="primary">
-                  {label}
-                </Typography>
-              </div>
-            )
-          })}
-        </ServiceIcons>
-      </ServicesIconContainer>
+      <ServicesIconBackground>
+        <ServicesIconContainer>
+          <SectionHeader className="header">What we do</SectionHeader>
+          <ServiceIcons>
+            {COMMERCIAL_SERVICES_LOGO_MAP.map(({ label, icon }) => {
+              return (
+                <div>
+                  <Icon src={icon} />
+                  <Typography className="label" variant="h5" color="primary">
+                    {label}
+                  </Typography>
+                </div>
+              )
+            })}
+          </ServiceIcons>
+        </ServicesIconContainer>
+      </ServicesIconBackground>
       <CarouselContainer>
         <TestimonyCarousel>
           {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (

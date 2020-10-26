@@ -123,9 +123,9 @@ const AddressCard = () => {
   return (
     <CardContainer className="address">
       <CardHeader>Where To Find Us</CardHeader>
-      <Typography variant="subtitle1">123 Main Street</Typography>
+      <Typography variant="subtitle1">180 John St.</Typography>
       <Typography variant="subtitle1">Toronto ON</Typography>
-      <Typography variant="subtitle1">M5J 0A7</Typography>
+      <Typography variant="subtitle1">M5T 1X5</Typography>
     </CardContainer>
   )
 }
@@ -149,7 +149,7 @@ const HoursCard = () => {
     <CardContainer className="hours">
       <CardHeader>When to call</CardHeader>
       <StyledTypography variant="h5">OPERATING HOURS</StyledTypography>
-      <Typography variant="subtitle1">9:00 - 5:00</Typography>
+      <Typography variant="subtitle1">9:00 - 6:00</Typography>
     </CardContainer>
   )
 }

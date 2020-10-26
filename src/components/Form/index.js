@@ -132,13 +132,7 @@ const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
         id="frenquency"
         placeholder="select one"
         displayEmpty
-        selectOptions={[
-          'commercial',
-          'retail',
-          'Advertising',
-          'Community  Center',
-          'Others'
-        ]}
+        selectOptions={['Daily', '1 - 3 times a week', 'Weekly', 'Bi-weekly']}
         renderValue={(val) => {
           return val || 'Select one'
         }}

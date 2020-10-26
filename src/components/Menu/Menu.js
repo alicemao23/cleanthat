@@ -43,12 +43,11 @@ const NavigationContainer = () => {
       <NavLink key={0} to="/" activeClassName="active">
         Home
       </NavLink>
-      <NavLink key={0} to="about-us" activeClassName="active">
+      <NavLink key={1} to="about-us" activeClassName="active">
         About us
       </NavLink>
       <Dropdown
         type="button"
-        key={1}
         onClick={handleClick}
         className={clsx(anchorEl ? 'isOpen' : '')}
       >
@@ -65,22 +64,17 @@ const NavigationContainer = () => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
       >
         <MenuItem onClick={handleClose}>
-          <NavLink key={0} to="residential-services" activeClassName="active">
+          <NavLink key={2} to="residential-services" activeClassName="active">
             Residential Services
           </NavLink>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <NavLink key={1} to="commercial-services" activeClassName="active">
+          <NavLink key={3} to="commercial-services" activeClassName="active">
             Commercial Services
           </NavLink>
         </MenuItem>
       </Menu>
-      <NavLink
-        key={2}
-        to="contact-us"
-        onClick={() => {}}
-        activeClassName="active"
-      >
+      <NavLink key={4} to="contact-us" activeClassName="active">
         Contact us
       </NavLink>
       {/* <NavLink key={3} path="blog" onClick={() => {}} name="Blog" /> */}
