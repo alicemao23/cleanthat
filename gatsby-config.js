@@ -39,7 +39,8 @@ const plugins = [
     }
   },
   'gatsby-transformer-remark',
-  'gatsby-plugin-offline'
+  'gatsby-plugin-offline',
+  'gatsby-plugin-material-ui'
 ]
 
 module.exports = client

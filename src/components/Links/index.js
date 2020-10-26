@@ -9,6 +9,11 @@ export const StyledLink = styled(Link)`
     font-family: ${theme.fonts.secondary};
     `}
 `
+export const ExternalStyledLink = styled.a`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  text-decoration: none;
+`
 export const RouteLink = styled(StyledLink)`
   font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.textSecondary};

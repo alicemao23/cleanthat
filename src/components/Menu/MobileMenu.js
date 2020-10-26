@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { navigate } from 'gatsby'
+
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -50,7 +52,12 @@ const MenuDrawer = () => {
           Blog
         </NavLink> */}
       </Nav>
-      <Button variant="commercial">Get a Quote</Button>
+      <Button
+        variant="commercial"
+        onClick={() => navigate('/commercial-services')}
+      >
+        Get a Quote
+      </Button>
     </MenuContainer>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RouteLink } from '../../components/Links'
+import { RouteLink, ExternalStyledLink } from '../../components/Links'
 import LOGO from '../../media/full-logo.svg'
 import {
   FooterContainer,
@@ -22,8 +22,8 @@ const NAV_LINKS = [
   'Commercial services',
   'Residential services',
   'Careers',
-  'Contact us',
-  'Blog'
+  'Contact us'
+  // 'Blog'
 ]
 
 const Footer = () => {
@@ -31,6 +31,13 @@ const Footer = () => {
     'If it’s a residential or commercial space — we clean that. '
   const NavLinks = NAV_LINKS.map((name) => {
     const path = formatNavPath(name)
+    if (name === 'Careers') {
+      return (
+        <ExternalStyledLink href="https://ca.indeed.com/cmp/Cleanthat">
+          {name}
+        </ExternalStyledLink>
+      )
+    }
     return <RouteLink to={path}>{name}</RouteLink>
   })
 

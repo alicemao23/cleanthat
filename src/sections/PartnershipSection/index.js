@@ -17,19 +17,18 @@ const Icon = styled.img`
   width: 100%;
   height: 5rem;
 `
-const PartnershipSection = (props) =>
-  console.log(props) || (
-    <Container {...props}>
-      <SectionHeader align="center">Who we’ve worked with</SectionHeader>
-      <div>
-        <Icon src="" alt="logo" />
-        <Icon src="" alt="logo" />
-        <Icon src="" alt="logo" />
-        <Icon src="" alt="logo" />
-        <Icon src="" alt="logo" />
-        <Icon src="" alt="logo" />
-      </div>
-    </Container>
-  )
+const PartnershipSection = (props) => (
+  <Container {...props}>
+    <SectionHeader align="center">Who we’ve worked with</SectionHeader>
+    <div>
+      <Icon src="" alt="logo" />
+      <Icon src="" alt="logo" />
+      <Icon src="" alt="logo" />
+      <Icon src="" alt="logo" />
+      <Icon src="" alt="logo" />
+      <Icon src="" alt="logo" />
+    </div>
+  </Container>
+)
 
 export default PartnershipSection

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import styled from 'styled-components'
+import { navigate } from 'gatsby'
+
 import Menu from '@material-ui/core/Menu'
 import MuiMenuItem from '@material-ui/core/MenuItem'
 
@@ -82,7 +84,12 @@ const NavigationContainer = () => {
         Contact us
       </NavLink>
       {/* <NavLink key={3} path="blog" onClick={() => {}} name="Blog" /> */}
-      <Button variant="commercial">Get a Quote</Button>
+      <Button
+        variant="commercial"
+        onClick={() => navigate('/commercial-services')}
+      >
+        Get a Quote
+      </Button>
     </Nav>
   )
 }

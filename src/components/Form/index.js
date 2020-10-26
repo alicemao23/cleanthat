@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import emailjs from 'emailjs-com'
+
 import { CardHeader } from '../Header'
 import Button from '../Button/CTAButton'
 import TextField from '../TextField'
@@ -49,22 +51,33 @@ const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
   }
 
   const onSubmit = (data) => {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'commercial-cleaning-inquiry', ...data })
-    })
-      .then(() => alert('Success!'))
-      .catch((error) => alert(error))
+    emailjs
+      .send(
+        'service_cp93y5p',
+        'template_02zqx6a',
+        data,
+        'user_rg33pSLAdt3sM76j1g2jL'
+      )
+      .then(
+        (result) => {
+          console.log(result.text)
+
+          alert('Success!', result.text)
+        },
+        (error) => {
+          console.log(error.text)
+          alert(error.text)
+        }
+      )
   }
   return (
-    <FormContainer name="contact" onSubmit={handleSubmit(onSubmit)}>
+    <FormContainer
+      className="commercial-form"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <CardHeader>{header}</CardHeader>
-      <input
-        type="hidden"
-        name="form-name"
-        value="commercial-cleaning-inquiry"
-      />
+
+      <input type="hidden" name="contact_number" />
       <TextField
         inputRef={register}
         name="name"
@@ -132,7 +145,7 @@ const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
       />
       <Button type="submit" variant="commercial">
         send
-      </Button>{' '}
+      </Button>
     </FormContainer>
   )
 }

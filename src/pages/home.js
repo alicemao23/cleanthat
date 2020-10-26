@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, navigate } from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 
 import CTAContainer from '../sections/CTAContainer'
@@ -71,6 +71,7 @@ const CommercialFeatureCard = () => {
       variant="commercial"
       direction="row-reverse"
       imgUrl={CommercialFeatureImg}
+      onClick={() => navigate('/commercial-services')}
     />
   )
 }
@@ -88,6 +89,7 @@ const ResidentialFeatureCard = () => {
       variant="residential"
       direction="row"
       imgUrl={ResidentialFeatureImg}
+      onClick={() => navigate('/residential-services')}
     />
   )
 }
