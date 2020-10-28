@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import emailjs from 'emailjs-com'
+import { object, string } from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import get from 'lodash.get'
 
 import { CardHeader } from '../Header'
 import Button from '../Button/CTAButton'
 import TextField from '../TextField'
 import Select from '../Select'
+import Error from '../Error'
 
 const FormContainer = styled.form`
   ${({ theme }) => `
@@ -39,9 +43,16 @@ const FormContainer = styled.form`
     }
   `}
 `
+const inquiryValidationSchema = object().shape({
+  name: string().required('Required'),
+  email: string().email().required('Required'),
+  inquiry: string().required('Please let us know how we can help')
+})
 
 const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
-  const { register, handleSubmit, watch, errors, control } = useForm()
+  const { register, handleSubmit, watch, errors, control } = useForm({
+    resolver: yupResolver(inquiryValidationSchema)
+  })
   const encode = (data) => {
     return Object.keys(data)
       .map(
@@ -84,16 +95,24 @@ const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
         type="text"
         placeholder="Your first and last name"
         label="name"
-        // required
+        error={!!errors.name}
+        helperText={get(errors, 'name.message', '')}
+        FormHelperTextProps={{
+          component: (props) => <Error name="fullName" {...props} />
+        }}
       />
       <TextField
         inputRef={register}
         name="email"
-        type="email"
+        type="text"
         label="email"
         id="email"
         placeholder="johndoe@email.com"
-        // required
+        error={!!errors.email}
+        helperText={get(errors, 'email.message', '')}
+        FormHelperTextProps={{
+          component: (props) => <Error name="email" {...props} />
+        }}
       />
       <TextField
         inputRef={register}
@@ -108,35 +127,57 @@ const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
         label="How can we help you?"
         id="inquiry"
         placeholder="Your inquiry"
-      />
-      <Select
-        type="text"
-        name="officeType"
-        inputRef={register}
-        label="Office type"
-        id="office-type"
-        displayEmpty
-        selectOptions={[
-          'commericial',
-          'retail',
-          'Advertising',
-          'Community  Center',
-          'Others'
-        ]}
-      />
-      <Select
-        type="text"
-        name="frequency"
-        inputRef={register}
-        label="Frequency of clean"
-        id="frenquency"
-        placeholder="select one"
-        displayEmpty
-        selectOptions={['Daily', '1 - 3 times a week', 'Weekly', 'Bi-weekly']}
-        renderValue={(val) => {
-          return val || 'Select one'
+        error={!!errors.inquiry}
+        helperText={get(errors, 'inquiry.message', '')}
+        FormHelperTextProps={{
+          component: (props) => <Error name="inquiry" {...props} />
         }}
       />
+      <Controller
+        render={({ onChange, value }) => (
+          <Select
+            type="text"
+            label="Office type"
+            id="office-type"
+            displayEmpty
+            onChange={onChange}
+            value={value}
+            selectOptions={[
+              'commericial',
+              'retail',
+              'Advertising',
+              'Community  Center',
+              'Others'
+            ]}
+          />
+        )}
+        name="officeType"
+        control={control}
+        defaultValue=""
+      />
+
+      <Controller
+        render={({ onChange, value }) => (
+          <Select
+            type="text"
+            label="Frequency of clean"
+            id="frenquency"
+            displayEmpty
+            onChange={onChange}
+            value={value}
+            selectOptions={[
+              'Daily',
+              '1 - 3 times a week',
+              'Weekly',
+              'Bi-weekly'
+            ]}
+          />
+        )}
+        name="frequency"
+        control={control}
+        defaultValue=""
+      />
+
       <Button type="submit" variant="commercial">
         send
       </Button>

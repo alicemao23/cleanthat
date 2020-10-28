@@ -45,13 +45,10 @@ const StyledFormControl = styled(FormControl)`
     white-space: normal;
   }
   ${({ theme }) => `
-  .MuiInputBase-root {
-      // background-color: ${theme.colors.inputBackground}
-    }
     .MuiSelect-icon {
       fill: ${theme.colors.secondaryLight};
     }
-    `};
+  `};
 `
 
 const SelectField = ({
@@ -60,6 +57,7 @@ const SelectField = ({
   placeholder,
   label,
   required,
+  value,
   ...props
 }) => {
   const classes = useStyles()
@@ -73,14 +71,12 @@ const SelectField = ({
           label={label}
           // className={values[name] ? classes.menuItem : classes.placeholder}
           id={id}
-          renderValue={(val) => val || 'Select one'}
+          renderValue={(val) => {
+            return val || 'Select one'
+          }}
+          value={value}
           {...props}
         >
-          {placeholder && (
-            <MenuItem key="placeholder" value="" disabled>
-              {placeholder}
-            </MenuItem>
-          )}
           {selectOptions.map((option, i) => (
             <MenuItem
               key={i}
@@ -92,7 +88,6 @@ const SelectField = ({
             </MenuItem>
           ))}
         </Select>
-        {/* <FormikError name={name} /> */}
       </StyledFormControl>
     </SelectContainer>
   )
