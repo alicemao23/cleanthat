@@ -7,7 +7,7 @@ import TextField from '../components/TextField'
 import Select from '../components/Select'
 import HeroBackground from '../media/residentialHero.svg'
 import Form from '../components/Form'
-import Button from '../components/Button/CTAButton'
+import Button from '../components/Button'
 import TestimonyCarousel from '../components/Carousel'
 import TestimonialTile from '../components/TestimonialTile'
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useForm, Controller } from 'react-hook-form'
 import emailjs from 'emailjs-com'
@@ -6,13 +6,14 @@ import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import get from 'lodash.get'
 
+import Button from '../Button'
 import { CardHeader } from '../Header'
-import Button from '../Button/CTAButton'
-import TextField from '../TextField'
-import Select from '../Select'
 import Error from '../Error'
+import FormSuccess from './FormSuccess'
+import Select from '../Select'
+import TextField from '../TextField'
 
-const FormContainer = styled.form`
+const FormContainer = styled.div`
   ${({ theme }) => `
   height: max-content;
   min-width: 33.5rem;
@@ -22,6 +23,8 @@ const FormContainer = styled.form`
   margin-top: -14rem;
   margin-bottom: 12rem;
   position: relative;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1);
+
   :before {
     content: '';
     width: 100%;
@@ -49,138 +52,156 @@ const inquiryValidationSchema = object().shape({
   inquiry: string().required('Please let us know how we can help')
 })
 
-const Form = ({ initialFormValue, children, header = 'Lets get started' }) => {
-  const { register, handleSubmit, watch, errors, control } = useForm({
+const Form = ({ children, header = "Let's get started" }) => {
+  const [formCompleted, setFormCompleted] = useState(false)
+
+  useEffect(() => {
+    return () => setFormCompleted(false)
+  }, [])
+
+  const { register, handleSubmit, errors, control, reset } = useForm({
     resolver: yupResolver(inquiryValidationSchema)
   })
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(
-        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-      )
-      .join('&')
-  }
 
   const onSubmit = (data) => {
     emailjs
       .send(
-        'service_cp93y5p',
-        'template_02zqx6a',
+        process.env.GATSBY_EMAILJS_SERVICE_ID,
+        process.env.GATSBY_EMAILJS_TEMPLATE_ID,
         data,
-        'user_rg33pSLAdt3sM76j1g2jL'
+        process.env.GATSBY_EMAILJS_USER_ID
       )
-      .then(
-        (result) => {
-          console.log(result.text)
+      .then(() => {
+        setFormCompleted(true)
+      })
+  }
 
-          alert('Success!', result.text)
-        },
-        (error) => {
-          console.log(error.text)
-          alert(error.text)
-        }
-      )
+  const resetForm = () => {
+    reset()
+    setFormCompleted(false)
   }
   return (
-    <FormContainer
-      className="commercial-form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <CardHeader>{header}</CardHeader>
+    <FormContainer>
+      {!formCompleted ? (
+        <form
+          className="commercial-form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
+          <CardHeader>{header}</CardHeader>
 
-      <input type="hidden" name="contact_number" />
-      <TextField
-        inputRef={register}
-        name="name"
-        type="text"
-        placeholder="Your first and last name"
-        label="name"
-        error={!!errors.name}
-        helperText={get(errors, 'name.message', '')}
-        FormHelperTextProps={{
-          component: (props) => <Error name="fullName" {...props} />
-        }}
-      />
-      <TextField
-        inputRef={register}
-        name="email"
-        type="text"
-        label="email"
-        id="email"
-        placeholder="johndoe@email.com"
-        error={!!errors.email}
-        helperText={get(errors, 'email.message', '')}
-        FormHelperTextProps={{
-          component: (props) => <Error name="email" {...props} />
-        }}
-      />
-      <TextField
-        inputRef={register}
-        name="phone"
-        label="phone (optional)"
-        id="phone"
-        placeholder="123-456-7890"
-      />
-      <TextField
-        inputRef={register}
-        name="inquiry"
-        label="How can we help you?"
-        id="inquiry"
-        placeholder="Your inquiry"
-        error={!!errors.inquiry}
-        helperText={get(errors, 'inquiry.message', '')}
-        FormHelperTextProps={{
-          component: (props) => <Error name="inquiry" {...props} />
-        }}
-      />
-      <Controller
-        render={({ onChange, value }) => (
-          <Select
+          <input type="hidden" name="contact_number" />
+          <TextField
+            inputRef={register}
+            name="name"
             type="text"
+            placeholder="Your first and last name"
+            label="name"
+            error={!!errors.name}
+            helperText={get(errors, 'name.message', '')}
+            FormHelperTextProps={{
+              component: (props) => <Error name="fullName" {...props} />
+            }}
+            required
+          />
+          <TextField
+            inputRef={register}
+            name="email"
+            type="text"
+            label="email"
+            id="email"
+            placeholder="johndoe@email.com"
+            error={!!errors.email}
+            helperText={get(errors, 'email.message', '')}
+            FormHelperTextProps={{
+              component: (props) => <Error name="email" {...props} />
+            }}
+            required
+          />
+          <TextField
+            inputRef={register}
+            name="phone"
+            label="phone (optional)"
+            id="phone"
+            placeholder="123-456-7890"
+          />
+          <TextField
+            inputRef={register}
+            name="inquiry"
+            label="How can we help you?"
+            id="inquiry"
+            placeholder="Your inquiry"
+            error={!!errors.inquiry}
+            helperText={get(errors, 'inquiry.message', '')}
+            FormHelperTextProps={{
+              component: (props) => <Error name="inquiry" {...props} />
+            }}
+            required
+          />
+          <Controller
+            render={({ onChange, value }) => (
+              <Select
+                type="text"
+                label="Office type"
+                id="office-type"
+                displayEmpty
+                onChange={onChange}
+                value={value}
+                selectOptions={[
+                  'commericial',
+                  'retail',
+                  'Advertising',
+                  'Community  Center',
+                  'Others'
+                ]}
+              />
+            )}
+            name="officeType"
+            control={control}
+            defaultValue=""
+            inputRef={register}
             label="Office type"
             id="office-type"
             displayEmpty
-            onChange={onChange}
-            value={value}
             selectOptions={[
-              'commericial',
-              'retail',
+              'Office space',
+              'Retail space',
+              'Coworking space',
               'Advertising',
-              'Community  Center',
+              'Com',
               'Others'
             ]}
           />
-        )}
-        name="officeType"
-        control={control}
-        defaultValue=""
-      />
 
-      <Controller
-        render={({ onChange, value }) => (
-          <Select
-            type="text"
-            label="Frequency of clean"
-            id="frenquency"
-            displayEmpty
-            onChange={onChange}
-            value={value}
-            selectOptions={[
-              'Daily',
-              '1 - 3 times a week',
-              'Weekly',
-              'Bi-weekly'
-            ]}
+          <Controller
+            render={({ onChange, value }) => (
+              <Select
+                type="text"
+                label="Frequency of clean"
+                id="frenquency"
+                displayEmpty
+                onChange={onChange}
+                value={value}
+                selectOptions={[
+                  'Daily',
+                  '1 - 3 times a week',
+                  'Weekly',
+                  'Bi-weekly'
+                ]}
+              />
+            )}
+            name="frequency"
+            control={control}
+            defaultValue=""
           />
-        )}
-        name="frequency"
-        control={control}
-        defaultValue=""
-      />
 
-      <Button type="submit" variant="commercial">
-        send
-      </Button>
+          <Button type="submit" variant="commercial">
+            send
+          </Button>
+        </form>
+      ) : (
+        <FormSuccess handleClick={resetForm} />
+      )}
     </FormContainer>
   )
 }

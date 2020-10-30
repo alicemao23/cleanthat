@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import { StyledCTAContainer, CTACard } from './CTAContainer.style'
-import Button from '../../components/Button/CTAButton'
+import Button from '../../components/Button'
 
 const CTAContainer = () => (
   <StyledCTAContainer>

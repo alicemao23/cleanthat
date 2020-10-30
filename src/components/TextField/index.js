@@ -1,10 +1,7 @@
 import React from 'react'
 
 import MuiTextField from '@material-ui/core/TextField'
-import InputLabel from '@material-ui/core/InputLabel'
 import { withStyles } from '@material-ui/core/styles'
-
-// import FormikError from '../Error'
 
 const StyledTextField = withStyles((theme) => ({
   root: {
@@ -14,21 +11,6 @@ const StyledTextField = withStyles((theme) => ({
     '& .MuiInputLabel-root': {
       color: theme.colors.commercial.primary
     }
-    //     '& input:disabled + fieldset': {
-    //       borderColor: theme.colors.backgroundColor,
-    //       borderWidth: 0,
-    //       backgroundColor: 'transparent'
-    //     },
-    //     '&:focused input + fieldset': {
-    //       border: `3px solid ${theme.colors.textSecondary}`
-    //     },
-    //     '&.Mui-focused input + fieldset': {
-    //       border: `3px solid ${theme.colors.primaryLight}`
-    //     }
-    //   },
-    //   '& .Mui-disabled': {
-    //     backgroundColor: theme.colors.backgroundColor
-    //   }
   }
 }))(MuiTextField)
 
@@ -42,11 +24,9 @@ const TextField = ({ label, id, placeholder, classes, ...props }) => {
           shrink: true
         }}
         placeholder={placeholder}
-        // InputProps={{ disabled: isTextFieldPrepopulated }}
         colors="primary"
         {...props}
       />
-      {/* <FormikError name={name} /> */}
     </div>
   )
 }

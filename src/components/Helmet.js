@@ -2,7 +2,6 @@ import React from 'react'
 import ReactHelmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { withTheme } from 'styled-components'
-import PropTypes from 'prop-types'
 
 const Helmet = ({ theme = {} }) => (
   <StaticQuery
@@ -79,9 +78,9 @@ const Helmet = ({ theme = {} }) => (
   />
 )
 
-Helmet.propTypes = {
-  // eslint-disable-next-line
-  theme: PropTypes.object
-}
+// Helmet.propTypes = {
+//   // eslint-disable-next-line
+//   theme: PropTypes.object
+// }
 
 export default withTheme(Helmet)

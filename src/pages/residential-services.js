@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
 
 import HeroBackground from '../media/commercial-hero.svg'
-import { StyledLink as Button } from '../components/Button/CTAButton'
+import { StyledLink as Button } from '../components/Button'
 import TestimonyCarousel from '../components/Carousel'
 import TestimonialTile from '../components/TestimonialTile'
 

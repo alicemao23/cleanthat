@@ -65,7 +65,7 @@ export const StyledContainer = styled(PageLayout)`
     }
     
     @media ${theme.screenSizes.laptopL} {
-      padding: 5rem 6rem 0;
+      padding: 5rem 12rem 0;
       ${IllustrationContainer} {
         margin-left: 4rem;
       }

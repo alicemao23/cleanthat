@@ -6,7 +6,7 @@ import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import Button from '../Button/CTAButton'
+import Button from '../Button'
 
 import { NavLink } from '../Links'
 

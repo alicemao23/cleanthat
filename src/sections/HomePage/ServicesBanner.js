@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Button from '../../components/Button/CTAButton'
+import Button from '../../components/Button'
 
 import {
   ServiceBannerContainer,

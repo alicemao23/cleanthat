@@ -7,7 +7,7 @@ import Menu from '@material-ui/core/Menu'
 import MuiMenuItem from '@material-ui/core/MenuItem'
 
 import { NavLink, Dropdown } from '../Links'
-import Button from '../Button/CTAButton'
+import Button from '../Button'
 
 const Nav = styled.div`
   display: flex;
@@ -23,6 +23,9 @@ const Nav = styled.div`
 
 const MenuItem = styled(MuiMenuItem)`
   height: 5.4rem;
+  a {
+    margin: 0;
+  }
   :hover {
     background-color: initial;
   }
