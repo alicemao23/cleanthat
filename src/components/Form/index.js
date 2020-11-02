@@ -148,10 +148,10 @@ const Form = ({ children, header = "Let's get started" }) => {
                 onChange={onChange}
                 value={value}
                 selectOptions={[
-                  'commericial',
-                  'retail',
+                  'Commericial',
+                  'Retail',
                   'Advertising',
-                  'Community  Center',
+                  'Community Center',
                   'Others'
                 ]}
               />

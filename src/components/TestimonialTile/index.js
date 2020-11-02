@@ -16,7 +16,7 @@ const TestimonialContainer = styled.div`
   font-size: 1.6rem;
   font-family: ${(props) => props.theme.fonts.body};
   border-radius: 8px;
-  height: 100%;
+  height: 40rem;
   p {
     line-height: 2rem;
     margin: 0;
@@ -88,8 +88,7 @@ const TestimonialTile = ({
       <BannerImage src={imgUrl} />
       <Container>
         <div>
-          <CardHeader variant="h3">{headerTitle}</CardHeader>
-          <Typography variant="h4">{headerLabel}</Typography>
+          <CardHeader>{headerLabel}</CardHeader>
           <Description variant="subtitle2">{`"${description}"`}</Description>
         </div>
         <Name

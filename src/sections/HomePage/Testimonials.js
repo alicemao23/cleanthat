@@ -6,6 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Carousel from '../../components/Carousel'
 
 import { SectionHeader } from '../../components/Header'
+import TESTIMONIALS from '../../shared/testimonials'
 
 const TestimonialContainer = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const TestimonialContainer = styled.div`
   font-size: 1.6rem;
   font-family: ${(props) => props.theme.fonts.body};
   border-radius: 8px;
+  height: 100%;
   p {
     line-height: 2rem;
     margin: 0;
@@ -31,7 +33,7 @@ const TestimonialContainer = styled.div`
   }
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
-     height: 4rem
+      height: 40rem;
       padding: 5rem;
     }
   `}
@@ -76,31 +78,26 @@ const Layout = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 40rem;
+  & > *:not(:last-child) {
+    margin-right: 1.5rem;
+  }
 `
 
 const TestimonialSection = () => {
-  const details =
-    'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!'
-  const author = 'Christine, PCK'
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('xl'))
+  const testimonials = TESTIMONIALS.map(({ details, author }) => (
+    <TestimonialTile details={details} author={author} />
+  ))
   return isDesktop ? (
     <Container>
       <SectionHeader align="center">Our clients come clean</SectionHeader>
-      <Layout>
-        <TestimonialTile details={details} author={author} />
-        <TestimonialTile details={details} author={author} />
-        <TestimonialTile details={details} author={author} />
-      </Layout>
+      <Layout>{testimonials}</Layout>
     </Container>
   ) : (
     <Container>
       <SectionHeader align="center">Our clients come clean</SectionHeader>
-      <Carousel>
-        {[1, 2, 3].map(() => (
-          <TestimonialTile details={details} author={author} />
-        ))}
-      </Carousel>
+      <Carousel>{testimonials}</Carousel>
     </Container>
   )
 }

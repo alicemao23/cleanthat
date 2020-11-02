@@ -3,34 +3,14 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
-import TextField from '../components/TextField'
-import Select from '../components/Select'
-import HeroBackground from '../media/residentialHero.svg'
 import Form from '../components/Form'
-import Button from '../components/Button'
 import TestimonyCarousel from '../components/Carousel'
 import TestimonialTile from '../components/TestimonialTile'
 
 import { COMMERCIAL_SERVICES_LOGO_MAP } from '../shared/constants'
+import TESTIMONIALS from '../shared/testimonials'
 
-const TESTIMONIALS = [
-  {
-    name: 'Christine Pratt',
-    headerLabel: 'Our clients come clean',
-    description:
-      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
-  }
-  // {
-  //   name: 'Christine Pratt',
-  //   headerLabel: 'Our clients come clean',
-  //   description:
-  //     'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-  //   imgPath:
-  //     'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
-  // }
-]
+import HeroBackground from '../media/residentialHero.svg'
 
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
@@ -241,13 +221,12 @@ const CommercialServicesPage = () => {
       </ServicesIconBackground>
       <CarouselContainer>
         <TestimonyCarousel>
-          {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (
+          {TESTIMONIALS.map(({ details, author, imgPath }) => (
             <TestimonialTile
-              headerTitle="Our clients come clean"
-              description={description}
-              headerLabe={headerLabel}
+              headerLabel="Our clients come clean"
+              description={details}
+              name={author}
               imgUrl={imgPath}
-              name={name}
             />
           ))}
         </TestimonyCarousel>

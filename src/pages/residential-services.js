@@ -8,27 +8,10 @@ import HeroBackground from '../media/commercial-hero.svg'
 import { StyledLink as Button } from '../components/Button'
 import TestimonyCarousel from '../components/Carousel'
 import TestimonialTile from '../components/TestimonialTile'
+import { RESIDENTIAL_TESTIMONIALS } from '../shared/testimonials'
 
 import { RESIDENTIAL_SERVICES_LOGO_MAP } from '../shared/constants'
 
-const TESTIMONIALS = [
-  {
-    name: 'Christine Pratt, PCK',
-    headerLabel: 'Our clients come clean',
-    description:
-      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'
-  },
-  {
-    name: 'Christine Pratt, PCK',
-    headerLabel: 'Our clients come clean',
-    description:
-      'We are extremely happy with the level of service CleanThat provides. You can trust their staff to be very thorough and clean. The microwave and keyboards were spotless, even our sugar bowl for coffee was sparkling. It’s the little extra care they take that make a big difference. Rest assured they will leave your office smelling fresh and clean. We highly recommend CleanThat!',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60'
-  }
-]
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
   max-width: 1440px;
@@ -228,14 +211,13 @@ const ResidentialServicesPage = () => {
       </ServicesIconBackground>
       <CarouselContainer>
         <TestimonyCarousel>
-          {TESTIMONIALS.map(({ headerLabel, description, name, imgPath }) => (
+          {RESIDENTIAL_TESTIMONIALS.map(({ details, author, imgPath }) => (
             <TestimonialTile
               type="residential"
-              headerTitle="Our clients come clean"
-              description={description}
-              headerLabe={headerLabel}
+              headerLabel="Our clients come clean"
+              description={details}
               imgUrl={imgPath}
-              name={name}
+              name={author}
             />
           ))}
         </TestimonyCarousel>
