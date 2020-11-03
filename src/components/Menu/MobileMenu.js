@@ -24,12 +24,15 @@ const MenuContainer = styled.div`
 const Nav = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
   position: relative;
   height: max-content;
   width: 100%;
-  > * :not(:last-child):not(:first-child) {
-    margin: 2.5rem auto;
+  > * {
+    width: max-content;
+  }
+  & > *:not(:first-child) {
+    margin: 2.5rem 0;
   }
 `
 
