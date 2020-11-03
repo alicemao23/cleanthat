@@ -7,7 +7,7 @@ import { autoPlay } from 'react-swipeable-views-utils'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     borderRadius: 8
   },
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     width: '100%'
   }
-}))
+})
 
 function SwipeableTextMobileStepper({ children }) {
   const classes = useStyles()

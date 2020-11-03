@@ -16,7 +16,7 @@ const TestimonialContainer = styled.div`
   font-size: 1.6rem;
   font-family: ${(props) => props.theme.fonts.body};
   border-radius: 8px;
-  height: 40rem;
+  height: 100%;
   p {
     line-height: 2rem;
     margin: 0;
@@ -29,6 +29,7 @@ const TestimonialContainer = styled.div`
   }
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
+    height: 40rem;
     flex-direction: row;
     }
   `}

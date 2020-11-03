@@ -53,7 +53,7 @@ const palette = {
     main: globalTheme.colors.commercial.primary
   },
   secondary: {
-    main: globalTheme.colors.residential.primary
+    main: globalTheme.colors.residential.primaryDark
   },
   text: {
     primary: globalTheme.colors.textPrimary,

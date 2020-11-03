@@ -113,6 +113,7 @@ const ServiceIcons = styled.div`
       }
  
       .label {
+        text-align: center;
         margin-top: 3.5rem;
       }
     }
@@ -145,6 +146,7 @@ const ServiceList = styled.ul`
     margin-bottom: 1.5rem;
   }
 `
+
 const ResidentialServicesPage = () => {
   return (
     <>

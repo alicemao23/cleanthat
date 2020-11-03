@@ -120,6 +120,7 @@ const ServiceIcons = styled.div`
       }
  
       .label {
+        text-align: center;
         margin-top: 3.5rem;
       }
     }
@@ -193,7 +194,7 @@ const CommercialServicesPage = () => {
             just this one time.
           </DescriptionBody>
           <ServiceList>
-            <li>Advertising Agents</li>
+            <li>Advertising agents</li>
             <li>Start-ups and innovation sector</li>
             <li>Office buildings / complexes</li>
             <li>Low to mid-rise condo buildings</li>

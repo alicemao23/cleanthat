@@ -30,6 +30,7 @@ module.exports = {
     },
     residential: {
       primary: '#FACE6F',
+      primaryDark: '#CF9914',
       primaryLight: '#FFF5E2',
       text: '#000000',
       background: '#FFF5E2'
