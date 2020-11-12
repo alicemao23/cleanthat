@@ -47,7 +47,7 @@ const NavigationContainer = () => {
         Home
       </NavLink>
       <NavLink key={1} to="about-us" activeClassName="active">
-        About us
+        About Us
       </NavLink>
       <Dropdown
         type="button"
@@ -78,7 +78,7 @@ const NavigationContainer = () => {
         </MenuItem>
       </Menu>
       <NavLink key={4} to="contact-us" activeClassName="active">
-        Contact us
+        Contact Us
       </NavLink>
       {/* <NavLink key={3} path="blog" onClick={() => {}} name="Blog" /> */}
       <Button

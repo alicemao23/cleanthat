@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com'
 import { object, string } from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import get from 'lodash.get'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Button from '../Button'
 import { CardHeader } from '../Header'
@@ -52,9 +53,22 @@ const inquiryValidationSchema = object().shape({
   inquiry: string().required('Please let us know how we can help')
 })
 
+const useStyles = makeStyles((theme) => ({
+  label: {
+    textTransform: 'uppercase',
+    '& .MuiFormLabel-root': {
+      fontFamily: theme.fonts.primary,
+      fontWeight: 'bold',
+      letterSpacing: '0.1em'
+    },
+    '& .MuiFormLabel-asterisk': {
+      color: theme.colors.accent
+    }
+  }
+}))
 const Form = ({ children, header = "Let's get started" }) => {
   const [formCompleted, setFormCompleted] = useState(false)
-
+  const classes = useStyles()
   useEffect(() => {
     return () => setFormCompleted(false)
   }, [])
@@ -92,6 +106,7 @@ const Form = ({ children, header = "Let's get started" }) => {
 
           <input type="hidden" name="contact_number" />
           <TextField
+            className={classes.label}
             inputRef={register}
             name="name"
             type="text"
@@ -105,6 +120,7 @@ const Form = ({ children, header = "Let's get started" }) => {
             required
           />
           <TextField
+            className={classes.label}
             inputRef={register}
             name="email"
             type="text"
@@ -119,13 +135,15 @@ const Form = ({ children, header = "Let's get started" }) => {
             required
           />
           <TextField
+            className={classes.label}
             inputRef={register}
             name="phone"
-            label="phone (optional)"
+            label="Phone (optional)"
             id="phone"
             placeholder="123-456-7890"
           />
           <TextField
+            className={classes.label}
             inputRef={register}
             name="inquiry"
             label="How can we help you?"
@@ -148,8 +166,9 @@ const Form = ({ children, header = "Let's get started" }) => {
                 onChange={onChange}
                 value={value}
                 selectOptions={[
-                  'Commericial',
-                  'Retail',
+                  'Office space',
+                  'Retail space',
+                  'Coworking space',
                   'Advertising',
                   'Community Center',
                   'Others'
@@ -163,14 +182,6 @@ const Form = ({ children, header = "Let's get started" }) => {
             label="Office type"
             id="office-type"
             displayEmpty
-            selectOptions={[
-              'Office space',
-              'Retail space',
-              'Coworking space',
-              'Advertising',
-              'Com',
-              'Others'
-            ]}
           />
 
           <Controller

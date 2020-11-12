@@ -99,24 +99,33 @@ const typography = {
   subtitle1: {
     fontFamily: globalTheme.fonts.secondary,
     fontSize: '1.6rem',
-    '@media (min-width:768px)': {
+    [`@media ${globalTheme.screenSizes.laptopL}`]: {
       fontSize: '2.4rem',
       lineHeight: '2.8rem'
     }
   },
   subtitle2: {
     fontSize: '1.6rem',
-    fontFamily: globalTheme.fonts.secondary
+    fontFamily: globalTheme.fonts.secondary,
+    [`@media ${globalTheme.screenSizes.laptopL}`]: {
+      fontSize: '2rem'
+    }
   },
   body1: {
     fontSize: '1.6rem',
     fontFamily: globalTheme.fonts.secondary,
-    lineHeight: '20px'
+    lineHeight: '20px',
+    [`@media ${globalTheme.screenSizes.laptopL}`]: {
+      fontSize: '2rem'
+    }
   },
   caption: {
     fontSize: '1.6rem',
     fontFamily: globalTheme.fonts.secondary,
-    lineHeight: '122%'
+    lineHeight: '122%',
+    [`@media ${globalTheme.screenSizes.laptopL}`]: {
+      fontSize: '2rem'
+    }
   },
   button: {
     fontSize: '1.2rem',

@@ -24,12 +24,14 @@ module.exports = {
     background: '#F5F5F5',
     commercial: {
       primary: '#1933D3',
+      accentText: '#1933D3',
       primaryLight: '#D2E6FD',
       text: '#FFFFFF',
       background: '#D2E6FD'
     },
     residential: {
       primary: '#FACE6F',
+      accentText: '#CF9914',
       primaryDark: '#CF9914',
       primaryLight: '#FFF5E2',
       text: '#000000',

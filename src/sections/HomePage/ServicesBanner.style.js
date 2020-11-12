@@ -25,6 +25,9 @@ export const BannerImage = styled.img`
 export const Container = styled.div`
   width: 100%;
   padding: 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex-shrink: 0;
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
@@ -40,7 +43,7 @@ export const Label = styled.span`
   font-size: 1.4rem;
   font-weight: bold;
   color: ${({ theme, variant = 'commercial' }) =>
-    theme.colors[variant].primary};
+    theme.colors[variant].accentText};
   text-transform: uppercase;
 `
 
@@ -49,10 +52,8 @@ export const Header = styled(Typography)`
   margin-bottom: 3.5rem;
 `
 
-export const Info = styled.p`
+export const Info = styled(Typography)`
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: 1.6rem;
-  line-height: 122%;
   margin: 0;
   margin-bottom: 5rem;
   ${({ theme }) => `

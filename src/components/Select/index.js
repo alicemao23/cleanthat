@@ -8,7 +8,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   label: {
-    color: theme.colors.commercial.primary
+    fontFamily: theme.fonts.primary,
+    color: theme.colors.commercial.primary,
+    fontWeight: 'bold',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase'
   },
   placeholder: {
     color: theme.colors.placeholder
@@ -69,7 +73,6 @@ const SelectField = ({
         </InputLabel>
         <Select
           label={label}
-          // className={values[name] ? classes.menuItem : classes.placeholder}
           id={id}
           renderValue={(val) => {
             return val || 'Select one'

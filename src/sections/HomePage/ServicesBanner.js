@@ -26,7 +26,7 @@ const ServicesBanner = ({
         <div>
           <Label variant={variant}>{headerLabel}</Label>
           <Header variant="h3">{headerTitle}</Header>
-          <Info>{description}</Info>
+          <Info variant="caption">{description}</Info>
         </div>
         <Button variant={variant} onClick={onClick}>
           Get Details

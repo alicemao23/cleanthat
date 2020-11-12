@@ -65,7 +65,7 @@ const MenuDrawer = ({ closeMenu }) => {
           to="about-us"
           activeClassName="active"
         >
-          About us
+          About Us
         </NavLink>
         <NavLink
           onClick={closeMenu}
@@ -90,7 +90,7 @@ const MenuDrawer = ({ closeMenu }) => {
           to="contact-us"
           activeClassName="active"
         >
-          Contact us
+          Contact Us
         </NavLink>
         {/* <NavLink key={6} to="blog" activeClassName="active">
           Blog

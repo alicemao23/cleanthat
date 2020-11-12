@@ -21,6 +21,8 @@ const TestimonialContainer = styled.div`
   font-family: ${(props) => props.theme.fonts.body};
   border-radius: 8px;
   height: 100%;
+  min-height: 40rem;
+
   p {
     line-height: 2rem;
     margin: 0;
@@ -41,7 +43,7 @@ const TestimonialContainer = styled.div`
 const TestimonialTile = ({ author = '', details = '' }) => {
   return (
     <TestimonialContainer>
-      <p>{details}</p>
+      <p>{`"${details}"`}</p>
       <span>{author}</span>
     </TestimonialContainer>
   )
@@ -67,7 +69,13 @@ const Container = styled.section`
     z-index: -1;
   }
   ${({ theme }) => `
+    @media ${theme.screenSizes.tablet} {
+      padding: 8rem 15rem 12rem;
+    }
     @media ${theme.screenSizes.laptop} {
+      padding: 8rem 3rem 19rem;
+    }
+    @media ${theme.screenSizes.laptopL} {
       padding: 8rem 12rem 19rem;
     }
   `}
@@ -76,15 +84,20 @@ const Container = styled.section`
 const Layout = styled.div`
   display: flex;
   justify-content: space-between;
-  min-height: 40rem;
+  height: 50rem;
   & > *:not(:last-child) {
     margin-right: 1.5rem;
   }
+  ${({ theme }) => `
+  @media ${theme.screenSizes.laptopL} {
+    height: 40rem;
+  }
+`}
 `
 
 const TestimonialSection = () => {
   const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('xl'))
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
   const testimonials = TESTIMONIALS.map(({ details, author }) => (
     <TestimonialTile details={details} author={author} />
   ))
