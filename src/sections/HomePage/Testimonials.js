@@ -26,7 +26,6 @@ const TestimonialContainer = styled.div`
   p {
     line-height: 2rem;
     margin: 0;
-    margin-bottom: 4.5rem;
   }
 
   span {

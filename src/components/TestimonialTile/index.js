@@ -29,7 +29,7 @@ const TestimonialContainer = styled.div`
   }
   ${({ theme }) => `
     @media ${theme.screenSizes.laptop} {
-    height: 40rem;
+    min-height: 40rem;
     flex-direction: row;
     }
   `}

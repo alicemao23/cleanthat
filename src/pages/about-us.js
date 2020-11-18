@@ -83,7 +83,7 @@ const FeatureCard = () => {
       description={description}
       variant="commercial"
       direction="row-reverse"
-      imgUrl={FeatureCardImage}
+      imgUrl="https://images.unsplash.com/photo-1595332997730-1cc9c994f652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3451&q=80"
     />
   )
 }
