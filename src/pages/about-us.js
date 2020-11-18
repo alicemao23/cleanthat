@@ -63,7 +63,7 @@ const AboutUsPage = () => (
       </Typography>
     </HeroBanner>
     <CTAContainer />
-    <PreferredPartner />
+    {/* <PreferredPartner /> */}
     <PartnershipSection />
     <FeatureCard />
     <ReverseFeatureCard />
