@@ -88,7 +88,7 @@ const typography = {
   },
   h4: {
     fontSize: '2.4rem',
-    fontWeight: 900
+    fontWeight: 700
   },
   h5: {
     fontSize: '1.4rem',

@@ -4,13 +4,14 @@ import Typography from '@material-ui/core/Typography'
 
 import { PageHeader, CardHeader, SectionHeader } from '../components/Header'
 
-import HeroBackground from '../media/commercial-hero.svg'
 import { StyledLink as Button } from '../components/Button'
 import TestimonyCarousel from '../components/Carousel'
 import TestimonialTile from '../components/TestimonialTile'
-import { RESIDENTIAL_TESTIMONIALS } from '../shared/testimonials'
 
+import { RESIDENTIAL_TESTIMONIALS } from '../shared/testimonials'
 import { RESIDENTIAL_SERVICES_LOGO_MAP } from '../shared/constants'
+
+import HeroBackground from '../media/residential-hero.png'
 
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
@@ -65,6 +66,7 @@ const HeroDetails = styled.div`
 const BackgroundContainer = styled.div`
   background-image: ${() => `url(${HeroBackground})`};
   background-size: cover;
+  background-position: top;
   background-repeat: no-repeat;
   width: 100%;
   overflow: auto;

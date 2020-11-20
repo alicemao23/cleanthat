@@ -9,7 +9,8 @@ import CSILogo from '../../media/csi-logo.png'
 import EastRoomLogo from '../../media/east-room-logo.png'
 
 const Background = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme, lightMode }) =>
+    lightMode ? theme.colors.primaryLight : theme.colors.background};
 `
 const Container = styled.div`
   max-width: 1440px;
@@ -56,8 +57,8 @@ const LOGOS = [
   LookaLogo,
   GreyLogo
 ]
-const PartnershipSection = (props) => (
-  <Background>
+const PartnershipSection = ({ lightMode = false, ...props }) => (
+  <Background lightMode={lightMode}>
     <Container {...props}>
       <SectionHeader align="center">Who we’ve worked with</SectionHeader>
       <IconContainer>

@@ -8,7 +8,6 @@ import PreferredPartner from '../sections/AboutUsPage/PreferredPartner'
 import PartnershipSection from '../sections/PartnershipSection'
 
 import BannerImage from '../media/about-us-herobanner.svg'
-import FeatureCardImage from '../media/feature-card-image1.png'
 import ReverseFeatureCardImage from '../media/feature-card-image2.png'
 
 // TODO: query banner from Contentful
@@ -63,8 +62,8 @@ const AboutUsPage = () => (
       </Typography>
     </HeroBanner>
     <CTAContainer />
-    {/* <PreferredPartner /> */}
-    <PartnershipSection />
+    <PreferredPartner />
+    <PartnershipSection lightMode />
     <FeatureCard />
     <ReverseFeatureCard />
   </>

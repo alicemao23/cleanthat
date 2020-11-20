@@ -10,7 +10,7 @@ import TestimonialTile from '../components/TestimonialTile'
 import { COMMERCIAL_SERVICES_LOGO_MAP } from '../shared/constants'
 import TESTIMONIALS from '../shared/testimonials'
 
-import HeroBackground from '../media/residentialHero.svg'
+import HeroBackground from '../media/commercial-hero.png'
 
 const ContainerLayout = styled.div`
   padding: 8rem 4rem;
@@ -75,6 +75,7 @@ const BackgroundContainer = styled.div`
   background-image: ${() => `url(${HeroBackground})`};
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: top;
   width: 100%;
   overflow: auto;
   .header {
